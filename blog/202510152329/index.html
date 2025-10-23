@@ -1,0 +1,975 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/r2net_favicon.png">
+  <link rel="icon" href="/img/r2net_favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="百二一">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="通过重置git仓库删除文件历史，并通过添加排除清单，以便精简Github和Vercel的储存空间大小。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重置git仓库以精简Github和Vercel空间大小">
+<meta property="og:url" content="https://rsreland.net/blog/202510152329/index.html">
+<meta property="og:site_name" content="百二一">
+<meta property="og:description" content="通过重置git仓库删除文件历史，并通过添加排除清单，以便精简Github和Vercel的储存空间大小。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rsreland.net/img/r2net_thumbnail.png">
+<meta property="article:published_time" content="2025-10-15T15:29:22.000Z">
+<meta property="article:modified_time" content="2025-10-15T16:06:16.379Z">
+<meta property="article:author" content="百二一">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rsreland.net/img/r2net_thumbnail.png">
+  
+  
+  
+  <title>重置git仓库以精简Github和Vercel空间大小 | 百二一</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rsreland.net","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","app_key":"3xhpLOaU8oKm2IGn0JVL08dW","server_url":"https://leancloud.rsreland.net","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>百二一</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/series/" target="_self">
+                <i class="iconfont icon-codeforces"></i>
+                <span>系列</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/thanks/" target="_self">
+                <i class="iconfont icon-bookmark-fill"></i>
+                <span>感谢</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/" target="_self">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/r2net_banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="重置git仓库以精简Github和Vercel空间大小"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-15 23:29" pubdate>
+          2025年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">重置git仓库以精简Github和Vercel空间大小</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年10月16日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="重置git仓库以精简Github和Vercel空间大小"><a href="#重置git仓库以精简Github和Vercel空间大小" class="headerlink" title="重置git仓库以精简Github和Vercel空间大小"></a>重置git仓库以精简Github和Vercel空间大小</h1><h1 id="一、精简项目大小"><a href="#一、精简项目大小" class="headerlink" title="一、精简项目大小"></a>一、精简项目大小</h1><ol>
+<li><p><strong>完整备份项目文件夹</strong></p>
+<blockquote>
+<p>非常重要！在进行操作前一定要完整备份！</p>
+</blockquote>
+</li>
+<li><p><strong>删除本地.git文件夹</strong>：</p>
+<blockquote>
+<ul>
+<li>打开项目文件夹</li>
+<li>确保显示隐藏文件（查看 → 勾选”隐藏的项目”）</li>
+<li>右键删除 <code>.git</code>文件夹（永久删除，不进回收站）</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>初始化仓库</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 确保在图库目录</span><br><span class="hljs-built_in">cd</span> E:\Hexo\H█n██mg\im██.github.io<br><span class="hljs-built_in">cd</span> e:<br><br><span class="hljs-comment"># 创建全新的.git文件夹</span><br>git init<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>添加</strong> <strong><code>.vercelignore</code>文件</strong>（项目根目录）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gitignore">.git<br># 添加其他非必要的大文件或目录<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>准备基础结构</strong></p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建最基本的仓库骨架</span><br><span class="hljs-built_in">mkdir</span> im██.github.io-skeleton<br><span class="hljs-built_in">cd</span> im██.github.io-skeleton<br><br><span class="hljs-comment"># 确保在当前骨架仓库目录</span><br><span class="hljs-built_in">cd</span> E:\Hexo\H█n██mg\im██.github.io-skeleton<br><span class="hljs-built_in">cd</span> e:<br><br><span class="hljs-comment"># 创建空的图片目录结构</span><br><span class="hljs-built_in">mkdir</span> img\2020 img\2021 img\2022 img\2023 img\2024 img\2025<br><span class="hljs-built_in">mkdir</span> img\2020\01<br><span class="hljs-built_in">mkdir</span> img\2020\02<br><span class="hljs-comment"># 继续为所有年份创建月份结构...</span><br><br><span class="hljs-comment"># 确认当前用户</span><br>git config user.name  <span class="hljs-comment"># 应显示 im██</span><br>git config user.email <span class="hljs-comment"># 应显示您的GitHub邮箱</span><br><br><span class="hljs-comment"># 如果不是，立即修正</span><br><span class="hljs-comment"># git config user.name &quot;im██&quot;</span><br><span class="hljs-comment"># git config user.email &quot;█e█a█n█@█ail.com&quot;</span><br><br><span class="hljs-comment"># 初始化仓库</span><br>git init<br>git add .<br>git commit -m <span class="hljs-string">&quot;初始化仓库结构&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>上传骨架仓库（强制覆盖）</strong></li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 验证本地状态（应有空白提交）</span><br>git log<br><span class="hljs-comment"># 应显示类似: commit [hash] (HEAD -&gt; master) 和 &quot;初始化仓库结构&quot;</span><br><span class="hljs-comment"># 输入 q 退出log</span><br><br><span class="hljs-comment"># 连接远程仓库，@后面的github.com为.ssh中config文件里的Host行设置的别名，需自行替换</span><br>git remote add origin git@github.com:im██/im██.github.io.git<br><span class="hljs-comment"># 验证远程地址</span><br>git remote <span class="hljs-literal">-v</span><br><br><span class="hljs-comment"># 强制推送（覆盖远程）</span><br>git push <span class="hljs-operator">-f</span> origin master<br><br><span class="hljs-comment"># 输出成功示例:</span><br><span class="hljs-comment"># Counting objects: 3, done.</span><br><span class="hljs-comment"># Writing objects: 100% (3/3), 210 bytes | 210.00 KiB/s, done.</span><br><span class="hljs-comment"># Total 3 (delta 0), reused 0 (delta 0), pack-reused 0</span><br><span class="hljs-comment"># To https://github.com/im██/im██.github.io.git</span><br><span class="hljs-comment">#  + 9da4a76...d34db7e master -&gt; master (forced update)</span><br><br><span class="hljs-comment"># 设置上游跟踪（仅首次需要）</span><br>git branch <span class="hljs-literal">--set-upstream-to</span>=origin/master master<br><br><span class="hljs-comment"># 验证远程状态</span><br>git remote show origin<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>按年份分批推送（示例）</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 回到原始项目目录</span><br><span class="hljs-built_in">cd</span> ..\im██.github.io<br><br><span class="hljs-comment"># 连接远程仓库，@后面的github.com为.ssh中config文件里的Host行设置的别名，需自行替换</span><br>git remote add origin git@github.com:im██/im██.github.io.git<br><br><span class="hljs-comment"># 手动添加图库核心文件</span><br>git add .gitattributes<br>git add .gitignore<br>git add .vercelignore<br>git add CNAME<br>git add index.html<br>git add README.md<br>git commit -m <span class="hljs-string">&quot;添加图库核心文件&quot;</span><br>git push -f origin master<br><br><span class="hljs-comment"># 添加首批内容（2020年图片）</span><br><span class="hljs-comment"># 只添加2020年</span><br>git add img/2020<br>git commit -m <span class="hljs-string">&quot;添加2020年图片&quot;</span><br>git push -f origin master<br><br><span class="hljs-comment"># 添加第二批（2021年图片）</span><br><span class="hljs-comment"># 重置暂存区</span><br>git reset .<br><span class="hljs-comment"># 只添加2021年</span><br>git add img/2021<br>git commit -m <span class="hljs-string">&quot;添加2021年图片&quot;</span><br>git push -f origin master<br><br><span class="hljs-comment"># 依次添加其他年份...</span><br></code></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><strong>后续年份添加完成后</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 验证推送完成</span><br>git ls-tree -r HEAD --name-only<br><span class="hljs-comment"># 应显示所有文件</span><br></code></pre></td></tr></table></figure>
+
+<ol start="8">
+<li><strong>完成最后一步（清除残留状态）</strong></li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1.重置本地状态</span><br>git reset <span class="hljs-literal">--hard</span> HEAD<br><br><span class="hljs-comment"># 2.与远程同步</span><br>git fetch origin<br><br><span class="hljs-comment"># 3.安全设置上游</span><br>git branch <span class="hljs-literal">--set-upstream-to</span>=origin/master master<br><br><span class="hljs-comment"># 4.验证状态</span><br>git status<br><span class="hljs-comment"># 应显示: Your branch is up to date with &#x27;origin/master&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><strong>若部分图片无法访问</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.只重新推送问题年份（如2025年）</span><br>git add img/2025<br>git commit -m <span class="hljs-string">&quot;重新推送2025年更新&quot;</span><br>git push origin master<br><br><span class="hljs-comment"># 2.文件级修复（单个文件）</span><br>git update-index --add --cacheinfo 100644 $(git hash-object -w 路径/文件名.jpg) 路径/文件名.jpg<br>git commit -m <span class="hljs-string">&quot;修复单文件&quot;</span><br>git push origin master<br></code></pre></td></tr></table></figure>
+
+<p>‍</p>
+<p>‍</p>
+<h1 id="二、使用-SSH-链接"><a href="#二、使用-SSH-链接" class="headerlink" title="二、使用 SSH 链接"></a>二、使用 SSH 链接</h1><ol>
+<li><strong>验证 GitHub 连接状态</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 测试 GitHub 的 HTTPS 连接</span><br>curl -v https://github.com<br><br><span class="hljs-comment"># 测试 SSH 连接</span><br>ssh -T git@github.com<br></code></pre></td></tr></table></figure>
+
+<p>如果提示 <code>Connection timed out</code> 或 <code>Could not resolve host</code> 则确认是网络问题。</p>
+<ol start="2">
+<li><strong>使用 SSH 协议（推荐）</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 生成 SSH 密钥</span><br>ssh-keygen -t imgr2net -C <span class="hljs-string">&quot;█e█a█n█@█ail.com&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>会在 .ssh 文件夹下生成 im██_id （私钥）和 im██_id.pub （公钥）两个文件。</p>
+<ol start="3">
+<li><strong>添加到 GitHub</strong></li>
+</ol>
+<blockquote>
+<ul>
+<li>复制公钥内容</li>
+<li>登录GitHub -&gt; Settings -&gt; SSH and GPG keys -&gt; New SSH key</li>
+<li>粘贴公钥内容，命名如 “im██-work-key”</li>
+</ul>
+</blockquote>
+<ol start="4">
+<li><strong>在config文件中添加</strong></li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">Host github.com<br>  HostName ssh.github.com<br>  Port 443<br>  User git<br>  IdentityFile ~/.ssh/im██<span class="hljs-emphasis">_id</span><br><span class="hljs-emphasis">  IdentitiesOnly yes</span><br></code></pre></td></tr></table></figure>
+
+<p>在 .ssh 目录创建配置文件（首次使用需创建config文件）</p>
+<ol start="5">
+<li><strong>检查当前密钥权限</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br><span class="hljs-comment"># 应当显示：Hi im██! You&#x27;ve successfully authenticated... </span><br><span class="hljs-comment"># 如果显示 █e█a█n█ 则说明错误密钥被使用</span><br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>使用 SSH 协议代替 HTTPS</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.移除现有的 origin</span><br>git remote <span class="hljs-built_in">rm</span> origin<br><br><span class="hljs-comment"># 2.添加 SSH 地址的 origin，@后面的github.com为.ssh中config文件里的Host行设置的别名，需自行替换</span><br>git remote add origin git@github.com:im██/im██.github.io.git<br><br><span class="hljs-comment"># 3.查看地址</span><br>git remote -v<br></code></pre></td></tr></table></figure>
+
+<p>既然 SSH 连接正常，直接改用 SSH 协议进行操作。</p>
+<ol start="7">
+<li><strong>SSH Config 隔离账户（额外操作）</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs config"># 账户1：imgr2net（图库专用）<br>Host im██-github<br>  HostName github.com<br>  Port 443<br>  User git<br>  IdentityFile ~/.ssh/im██_id<br>  IdentitiesOnly yes<br><br># 账户2：█e█a█n█（其他项目）<br>Host █e█a█n█-github<br>  HostName github.com<br>  Port 443<br>  User git<br>  IdentityFile ~/.ssh/█e█a█n█_id<br>  IdentitiesOnly yes<br></code></pre></td></tr></table></figure>
+
+<p>如果需要管理两个github，则config添加以上内容。然后切换项目文件夹，在各自的文件夹下分别按第6步执行。</p>
+<p>git remote set-url origin <a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#105;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:im██&#x2F;im██.github.io.git 另外需要把 github.com 改成 Host 后面设置的别名，例如 im██-github 。</p>
+<p>‍</p>
+<p>‍</p>
+<h1 id="三、使用令牌链接"><a href="#三、使用令牌链接" class="headerlink" title="三、使用令牌链接"></a>三、使用令牌链接</h1><ol>
+<li><strong>令牌创建步骤</strong></li>
+</ol>
+<ul>
+<li>Token name (令牌名称)</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">输入一个有意义的名称（如：&quot;im██-image-repo&quot;）<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Expiration (过期时间)</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">选择 &quot;无到期&quot; 或自定义日期（建议选择较长时间）<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Resource owner (资源所有者)</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">选择您的账号 &quot;im██&quot;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Repository access (仓库访问权限)</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">✅ 选择 &quot;Only select repositories&quot;  <br>   └ 在下方仓库列表中勾选 &quot;im██/im██.github.io&quot;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Permissions (权限) 按最小权限原则配置</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown">📁 Repository permissions:<br>  ▪ Contents: ✅ Read and write（必须！用于上传图片）<br>  ▪ Metadata: ✅ Read-only<br>  ▪ 其他权限: 保持未选中<br><br>📦 Account permissions:<br>  ▪ 所有权限: ❌ 不勾选（图库不需要账户级权限）<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>生成令牌</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">点击底部绿色 &quot;Generate token&quot; 按钮<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>令牌创建成功后</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1.创建个人访问令牌 (Personal Access Token)</span><br><span class="hljs-comment">#   登录 GitHub → Settings → Developer settings → Personal access tokens</span><br><span class="hljs-comment">#   勾选 repo 权限 → 生成并复制令牌（如 ghp_xxxxxxxx）</span><br><br><span class="hljs-comment"># 2.修改远程地址，@后面的github.com为.ssh中config文件里的Host行设置的别名，需自行替换</span><br>git remote <span class="hljs-built_in">set-url</span> origin https://im██:ghp_xxxxxxxx@github.com/im██/im██.github.io.git<br><br><span class="hljs-comment"># 3.简化推送（跳过 SSH）</span><br>git push <span class="hljs-operator">-f</span> origin master<br></code></pre></td></tr></table></figure>
+
+<p>‍</p>
+<p>‍</p>
+<h1 id="四、诊断工具"><a href="#四、诊断工具" class="headerlink" title="四、诊断工具"></a>四、诊断工具</h1><ol>
+<li>验证端口连接</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 测试端口 443 是否开放</span><br>tnc ssh.github.com <span class="hljs-literal">-Port</span> <span class="hljs-number">443</span><br><br><span class="hljs-comment"># 测试代理可用性</span><br><span class="hljs-built_in">curl</span> <span class="hljs-literal">-v</span> https://github.com <span class="hljs-literal">--proxy</span> http://<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">23457</span><br><br><span class="hljs-comment"># 检查实际使用的端口</span><br>git push <span class="hljs-literal">-u</span> origin master <span class="hljs-literal">-v</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修复 SSL 证书路径</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 1. 设置 Git 使用 Windows 自带的证书库</span><br>git config <span class="hljs-literal">--global</span> http.sslBackend schannel<br><br><span class="hljs-comment"># 2. 验证配置</span><br>git config <span class="hljs-literal">--global</span> <span class="hljs-literal">--get</span> http.sslBackend<br><span class="hljs-comment"># 应该输出: schannel</span><br></code></pre></td></tr></table></figure>
+
+<p>‍</p>
+<p>‍</p>
+
+                
+              </div>
+            
+            <hr/>
+            <!-- 已修改-新增：打赏代码 开始 -->
+            <div>
+              <details style="text-align:center">
+                <summary style="font-size:1.7em; color: #f2481b;">捐赠一元，支持一下！</summary>
+                <img src="/thanks/r2net_alipay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">　
+                <img src="/thanks/r2net_wechatpay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">
+                <p>注：捐赠时如在留言中注明网名或昵称，即可被列入到感谢名单中。否则，会以佚名身份列入名单。</p>
+              </details>
+            </div>
+            <hr/>
+            <!-- 已修改-新增：打赏代码 结束 -->
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%99%E7%A8%8B/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/git/" class="print-no-link">#git</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>重置git仓库以精简Github和Vercel空间大小</div>
+      <div>https://rsreland.net/blog/202510152329/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>百二一</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202510181911/" title="物理学家杨振宁逝世">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">物理学家杨振宁逝世</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202510141709/" title="2025年本站第1次装修记录">
+                        <span class="hidden-mobile">2025年本站第1次装修记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","appKey":"3xhpLOaU8oKm2IGn0JVL08dW","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://leancloud.rsreland.net","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+      <!-- 已修改-新增：相关文章 开始 -->
+      <aside class="sidebar" style="padding-left: 0rem; margin-right: 1rem; position: sticky; top: 64px;">
+        
+            <section class="related-posts">
+                <h5><b>= 相关文章 =</b></h5>
+                <ul>
+                
+                        <li><a href="/blog/202002172024/">简单易懂的MinGW-w64安装教程：著名C语言编译器GCC的Windows版本</a></li>
+                        
+                        <li><a href="/blog/202002291151/">在Emacs中用ediff比较文件时出错的解决方法</a></li>
+                        
+                        <li><a href="/blog/202002291102/">简单易懂的GNU Emacs安装教程：世界著名的顶级全能文本编辑器</a></li>
+                        
+                </ul>
+            </section>
+        
+      </aside>
+      <!-- 已修改-新增：相关文章 结束 -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

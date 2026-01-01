@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/r2net_favicon.png">
+  <link rel="icon" href="/img/r2net_favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="百二一">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="8月第4周（19-25日），主要干了以下事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【干了啥】8月第4周：黑神话考据、电脑硬件原理">
+<meta property="og:url" content="https://rsreland.net/blog/202408251806/index.html">
+<meta property="og:site_name" content="百二一">
+<meta property="og:description" content="8月第4周（19-25日），主要干了以下事情。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.50121.top/img/2024/08/240825_1.jpg">
+<meta property="article:published_time" content="2024-08-25T10:06:14.000Z">
+<meta property="article:modified_time" content="2025-10-14T10:57:37.419Z">
+<meta property="article:author" content="百二一">
+<meta property="article:tag" content="干了啥">
+<meta property="article:tag" content="第4周">
+<meta property="article:tag" content="8月">
+<meta property="article:tag" content="2024年">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.50121.top/img/2024/08/240825_1.jpg">
+  
+  
+  
+  <title>【干了啥】8月第4周：黑神话考据、电脑硬件原理 | 百二一</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rsreland.net","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","app_key":"3xhpLOaU8oKm2IGn0JVL08dW","server_url":"https://leancloud.rsreland.net","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>百二一</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/series/" target="_self">
+                <i class="iconfont icon-codeforces"></i>
+                <span>系列</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/thanks/" target="_self">
+                <i class="iconfont icon-bookmark-fill"></i>
+                <span>感谢</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/" target="_self">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/r2net_banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【干了啥】8月第4周：黑神话考据、电脑硬件原理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-25 18:06" pubdate>
+          2024年8月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          468 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【干了啥】8月第4周：黑神话考据、电脑硬件原理</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年10月14日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>8月第4周（19-25日），主要干了以下事情。</p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><h2 id="聖園ミカ"><a href="#聖園ミカ" class="headerlink" title="聖園ミカ"></a>聖園ミカ</h2><p><img src="https://img.50121.top/img/2024/08/240825_1.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_2.jpg">https://img.50121.top/img/2024/08/240825_2.jpg</a></p>
+<p>Pixiv：121623698</p>
+<p>　</p>
+<h2 id="私服デート"><a href="#私服デート" class="headerlink" title="私服デート"></a>私服デート</h2><p><img src="https://img.50121.top/img/2024/08/240825_3.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_4.jpg">https://img.50121.top/img/2024/08/240825_4.jpg</a></p>
+<p>Pixiv：121636064</p>
+<p>　</p>
+<h2 id="56日目-飛鳥馬-トキ"><a href="#56日目-飛鳥馬-トキ" class="headerlink" title="56日目, 飛鳥馬 トキ"></a>56日目, 飛鳥馬 トキ</h2><p><img src="https://img.50121.top/img/2024/08/240825_5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_6.jpg">https://img.50121.top/img/2024/08/240825_6.jpg</a></p>
+<p>Pixiv：121653534</p>
+<p>　</p>
+<h2 id="ニャンフーきなこフィギュア～おきがえコレクション～"><a href="#ニャンフーきなこフィギュア～おきがえコレクション～" class="headerlink" title="ニャンフーきなこフィギュア～おきがえコレクション～"></a>ニャンフーきなこフィギュア～おきがえコレクション～</h2><p><img src="https://img.50121.top/img/2024/08/240825_7.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_8.jpg">https://img.50121.top/img/2024/08/240825_8.jpg</a></p>
+<p>Pixiv：121662733</p>
+<p>　</p>
+<h2 id="風呂上がりに生徒とのラインをチェックしてつい頬が緩む水泳部顧問"><a href="#風呂上がりに生徒とのラインをチェックしてつい頬が緩む水泳部顧問" class="headerlink" title="風呂上がりに生徒とのラインをチェックしてつい頬が緩む水泳部顧問"></a>風呂上がりに生徒とのラインをチェックしてつい頬が緩む水泳部顧問</h2><p><img src="https://img.50121.top/img/2024/08/240825_9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_10.jpg">https://img.50121.top/img/2024/08/240825_10.jpg</a></p>
+<p>Pixiv：121674951</p>
+<p>　</p>
+<h2 id="街の白機士"><a href="#街の白機士" class="headerlink" title="街の白機士"></a>街の白機士</h2><p><img src="https://img.50121.top/img/2024/08/240825_11.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_12.jpg">https://img.50121.top/img/2024/08/240825_12.jpg</a></p>
+<p>Pixiv：121711867</p>
+<p>　</p>
+<h2 id="無題"><a href="#無題" class="headerlink" title="無題"></a>無題</h2><p><img src="https://img.50121.top/img/2024/08/240825_13.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_14.jpg">https://img.50121.top/img/2024/08/240825_14.jpg</a></p>
+<p>Pixiv：121760951</p>
+<p>　</p>
+<h2 id="礼服沙织"><a href="#礼服沙织" class="headerlink" title="礼服沙织"></a>礼服沙织</h2><p><img src="https://img.50121.top/img/2024/08/240825_15.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/08/240825_16.png">https://img.50121.top/img/2024/08/240825_16.png</a></p>
+<p>Pixiv：121819902</p>
+<p>　</p>
+<p>　</p>
+<h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><h2 id="学会这6种拌面，你就是拌面的神"><a href="#学会这6种拌面，你就是拌面的神" class="headerlink" title="学会这6种拌面，你就是拌面的神"></a>学会这6种拌面，你就是拌面的神</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=1456268965&bvid=BV14i421h7d4&cid=1646853522&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14i421h7d4">https://www.bilibili.com/video/BV14i421h7d4</a></p>
+<p>　</p>
+<h2 id="房，堂，室，厢，舍，寓，邸，府，宅，殿，宫都有什么区别？"><a href="#房，堂，室，厢，舍，寓，邸，府，宅，殿，宫都有什么区别？" class="headerlink" title="房，堂，室，厢，舍，寓，邸，府，宅，殿，宫都有什么区别？"></a>房，堂，室，厢，舍，寓，邸，府，宅，殿，宫都有什么区别？</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=1056257976&bvid=BV1MH4y1c7g6&cid=1652731504&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1MH4y1c7g6">https://www.bilibili.com/video/BV1MH4y1c7g6</a></p>
+<p>　</p>
+<h2 id="【黑神话-大圣】神话考据，脚踏南天，棍碎凌霄！那个猴子早已远超神佛！"><a href="#【黑神话-大圣】神话考据，脚踏南天，棍碎凌霄！那个猴子早已远超神佛！" class="headerlink" title="【黑神话-大圣】神话考据，脚踏南天，棍碎凌霄！那个猴子早已远超神佛！"></a>【黑神话-大圣】神话考据，脚踏南天，棍碎凌霄！那个猴子早已远超神佛！</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=1206365992&bvid=BV17f421B7s6&cid=1657923672&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17f421B7s6">https://www.bilibili.com/video/BV17f421B7s6</a></p>
+<p>　</p>
+<h2 id="与幻觉共存八年后，给大伙讲讲看到幻觉是啥样的"><a href="#与幻觉共存八年后，给大伙讲讲看到幻觉是啥样的" class="headerlink" title="与幻觉共存八年后，给大伙讲讲看到幻觉是啥样的"></a>与幻觉共存八年后，给大伙讲讲看到幻觉是啥样的</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=112994113818348&bvid=BV1b7WpewEvX&cid=500001655991267&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1b7WpewEvX">https://www.bilibili.com/video/BV1b7WpewEvX</a></p>
+<p>　</p>
+<h2 id="21张显卡大战黑神话悟空，看看你的显卡能不能顶住？"><a href="#21张显卡大战黑神话悟空，看看你的显卡能不能顶住？" class="headerlink" title="21张显卡大战黑神话悟空，看看你的显卡能不能顶住？"></a>21张显卡大战黑神话悟空，看看你的显卡能不能顶住？</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=1656677515&bvid=BV1WE421c7t5&cid=1658401707&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>biliibli：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1WE421c7t5">https://www.bilibili.com/video/BV1WE421c7t5</a></p>
+<p>　</p>
+<h2 id="【历史05】20分钟解析犹太信仰，被某种契约所塑造的特殊民族"><a href="#【历史05】20分钟解析犹太信仰，被某种契约所塑造的特殊民族" class="headerlink" title="【历史05】20分钟解析犹太信仰，被某种契约所塑造的特殊民族"></a>【历史05】20分钟解析犹太信仰，被某种契约所塑造的特殊民族</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=514374684&bvid=BV1Jg411k7SX&cid=798318606&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jg411k7SX">https://www.bilibili.com/video/BV1Jg411k7SX</a></p>
+<p>　</p>
+<h2 id="【巴以冲突-1-2-】一口气看完巴勒斯坦、以色列千年史"><a href="#【巴以冲突-1-2-】一口气看完巴勒斯坦、以色列千年史" class="headerlink" title="【巴以冲突(1&#x2F;2)】一口气看完巴勒斯坦、以色列千年史"></a>【巴以冲突(1&#x2F;2)】一口气看完巴勒斯坦、以色列千年史</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=248733450&bvid=BV1gv411W7Tt&cid=354980126&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gv411W7Tt">https://www.bilibili.com/video/BV1gv411W7Tt</a></p>
+<p>　</p>
+<h2 id="【巴以冲突-2-2-】超长整理-百年纠纷渊源，孰是孰非？"><a href="#【巴以冲突-2-2-】超长整理-百年纠纷渊源，孰是孰非？" class="headerlink" title="【巴以冲突(2&#x2F;2)】超长整理 | 百年纠纷渊源，孰是孰非？"></a>【巴以冲突(2&#x2F;2)】超长整理 | 百年纠纷渊源，孰是孰非？</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=890431365&bvid=BV1LP4y1Y7Ch&cid=406397792&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LP4y1Y7Ch">https://www.bilibili.com/video/BV1LP4y1Y7Ch</a></p>
+<p>　</p>
+<h2 id="利用魔术道具，假装坐穿椅子，哈哈～～～"><a href="#利用魔术道具，假装坐穿椅子，哈哈～～～" class="headerlink" title="利用魔术道具，假装坐穿椅子，哈哈～～～"></a>利用魔术道具，假装坐穿椅子，哈哈～～～</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=872981332&bvid=BV1iN4y1X76B&cid=1251186816&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iN4y1X76B">https://www.bilibili.com/video/BV1iN4y1X76B</a></p>
+<p>　</p>
+<h2 id="一口气带你深度解读电脑所有硬件的工作原理"><a href="#一口气带你深度解读电脑所有硬件的工作原理" class="headerlink" title="一口气带你深度解读电脑所有硬件的工作原理"></a>一口气带你深度解读电脑所有硬件的工作原理</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=113011628967833&bvid=BV1cUWQevEkn&cid=500001659788166&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cUWQevEkn">https://www.bilibili.com/video/BV1cUWQevEkn</a></p>
+<p>　</p>
+<h2 id="有一种忙叫越帮越忙，有一种乱叫……！"><a href="#有一种忙叫越帮越忙，有一种乱叫……！" class="headerlink" title="有一种忙叫越帮越忙，有一种乱叫……！"></a>有一种忙叫越帮越忙，有一种乱叫……！</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=1406638783&bvid=BV1Yr421T7Tp&cid=1659137007&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yr421T7Tp">https://www.bilibili.com/video/BV1Yr421T7Tp</a></p>
+<p>　</p>
+<h2 id="小米净化器2-0-增强除甲醛"><a href="#小米净化器2-0-增强除甲醛" class="headerlink" title="小米净化器2.0 增强除甲醛"></a>小米净化器2.0 增强除甲醛</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=1452666460&bvid=BV1nq421w73u&cid=1494380544&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nq421w73u">https://www.bilibili.com/video/BV1nq421w73u</a></p>
+<p>　</p>
+<p>　</p>
+<h1 id="说点啥"><a href="#说点啥" class="headerlink" title="说点啥"></a>说点啥</h1><p>《黑神话：悟空》</p>
+<p>　</p>
+<p>　</p>
+
+                
+              </div>
+            
+            <hr/>
+            <!-- 已修改-新增：打赏代码 开始 -->
+            <div>
+              <details style="text-align:center">
+                <summary style="font-size:1.7em; color: #f2481b;">捐赠一元，支持一下！</summary>
+                <img src="/thanks/r2net_alipay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">　
+                <img src="/thanks/r2net_wechatpay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">
+                <p>注：捐赠时如在留言中注明网名或昵称，即可被列入到感谢名单中。否则，会以佚名身份列入名单。</p>
+              </details>
+            </div>
+            <hr/>
+            <!-- 已修改-新增：打赏代码 结束 -->
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AC%94%E8%AE%B0/%E5%91%A8%E6%8A%A5/" class="category-chain-item">周报</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B9%B2%E4%BA%86%E5%95%A5/" class="print-no-link">#干了啥</a>
+      
+        <a href="/tags/%E7%AC%AC4%E5%91%A8/" class="print-no-link">#第4周</a>
+      
+        <a href="/tags/8%E6%9C%88/" class="print-no-link">#8月</a>
+      
+        <a href="/tags/2024%E5%B9%B4/" class="print-no-link">#2024年</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【干了啥】8月第4周：黑神话考据、电脑硬件原理</div>
+      <div>https://rsreland.net/blog/202408251806/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>百二一</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202409011401/" title="【干了啥】8月第5周：《𝐹𝑜𝑟𝑒𝑔𝑒𝑡𝑎𝑃𝑜𝑒𝑚𝑜》、羽管键琴">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【干了啥】8月第5周：《𝐹𝑜𝑟𝑒𝑔𝑒𝑡𝑎𝑃𝑜𝑒𝑚𝑜》、羽管键琴</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202408181134/" title="【干了啥】8月第3周：梅西事件始末、常见咖喱">
+                        <span class="hidden-mobile">【干了啥】8月第3周：梅西事件始末、常见咖喱</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","appKey":"3xhpLOaU8oKm2IGn0JVL08dW","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://leancloud.rsreland.net","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+      <!-- 已修改-新增：相关文章 开始 -->
+      <aside class="sidebar" style="padding-left: 0rem; margin-right: 1rem; position: sticky; top: 64px;">
+        
+            <section class="related-posts">
+                <h5><b>= 相关文章 =</b></h5>
+                <ul>
+                
+                        <li><a href="/blog/202008302244/">【干了啥】8月第4周：《幻化成风》、《爆笑虫子 第三季》</a></li>
+                        
+                        <li><a href="/blog/202508312214/">【干了啥】8月第4周：《天使引擎》、安眠药</a></li>
+                        
+                        <li><a href="/blog/202308271812/">【干了啥】8月第4周：少女发动机、蟹堡王</a></li>
+                        
+                        <li><a href="/blog/202108291957/">【干了啥】8月第4周：没有名字的小说、禾下乘凉梦</a></li>
+                        
+                        <li><a href="/blog/202208282051/">【干了啥】8月第4周：定格动画、克苏鲁神话解说</a></li>
+                        
+                        <li><a href="/blog/202403311929/">【干了啥】3月第4周：春季衬衫推荐、LCD技术</a></li>
+                        
+                        <li><a href="/blog/202412291717/">【干了啥】12月第4周：光速三大问题、EVA结局解析</a></li>
+                        
+                        <li><a href="/blog/202412011905/">【干了啥】11月第4周：德贝莱纳打火机、原研药</a></li>
+                        
+                        <li><a href="/blog/202401281523/">【干了啥】1月第4周：《小雅·鹿鸣》、糖渍橙皮</a></li>
+                        
+                </ul>
+            </section>
+        
+      </aside>
+      <!-- 已修改-新增：相关文章 结束 -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

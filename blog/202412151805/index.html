@@ -1,0 +1,907 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/r2net_favicon.png">
+  <link rel="icon" href="/img/r2net_favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="百二一">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="12月第2周（9-15日），主要干了以下事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【干了啥】12月第2周：潜艇通讯技术、纸板M1911">
+<meta property="og:url" content="https://rsreland.net/blog/202412151805/index.html">
+<meta property="og:site_name" content="百二一">
+<meta property="og:description" content="12月第2周（9-15日），主要干了以下事情。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.50121.top/img/2024/12/241215_1.jpg">
+<meta property="article:published_time" content="2024-12-15T10:05:08.000Z">
+<meta property="article:modified_time" content="2025-10-14T10:51:29.228Z">
+<meta property="article:author" content="百二一">
+<meta property="article:tag" content="干了啥">
+<meta property="article:tag" content="第2周">
+<meta property="article:tag" content="12月">
+<meta property="article:tag" content="2024年">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.50121.top/img/2024/12/241215_1.jpg">
+  
+  
+  
+  <title>【干了啥】12月第2周：潜艇通讯技术、纸板M1911 | 百二一</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rsreland.net","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","app_key":"3xhpLOaU8oKm2IGn0JVL08dW","server_url":"https://leancloud.rsreland.net","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>百二一</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/series/" target="_self">
+                <i class="iconfont icon-codeforces"></i>
+                <span>系列</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/thanks/" target="_self">
+                <i class="iconfont icon-bookmark-fill"></i>
+                <span>感谢</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/" target="_self">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/r2net_banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【干了啥】12月第2周：潜艇通讯技术、纸板M1911"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-15 18:05" pubdate>
+          2024年12月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          312 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【干了啥】12月第2周：潜艇通讯技术、纸板M1911</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年10月14日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>12月第2周（9-15日），主要干了以下事情。</p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><h2 id="～"><a href="#～" class="headerlink" title="～"></a>～</h2><p><img src="https://img.50121.top/img/2024/12/241215_1.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/12/241215_2.jpg">https://img.50121.top/img/2024/12/241215_2.jpg</a></p>
+<p>Pixiv：125021891</p>
+<p>　</p>
+<h2 id="アリス・イン・ワンダーランド"><a href="#アリス・イン・ワンダーランド" class="headerlink" title="アリス・イン・ワンダーランド"></a>アリス・イン・ワンダーランド</h2><p><img src="https://img.50121.top/img/2024/12/241215_3.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/12/241215_4.png">https://img.50121.top/img/2024/12/241215_4.png</a></p>
+<p>Pixiv：125049816</p>
+<p>　</p>
+<h2 id="Guillotine：-Winter-Slayer"><a href="#Guillotine：-Winter-Slayer" class="headerlink" title="Guillotine： Winter Slayer"></a>Guillotine： Winter Slayer</h2><p><img src="https://img.50121.top/img/2024/12/241215_5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/12/241215_6.jpg">https://img.50121.top/img/2024/12/241215_6.jpg</a></p>
+<p>Pixiv：125068254</p>
+<p>　</p>
+<h2 id="mignon個展「mignonium」"><a href="#mignon個展「mignonium」" class="headerlink" title="mignon個展「mignonium」"></a>mignon個展「mignonium」</h2><p><img src="https://img.50121.top/img/2024/12/241215_7.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/12/241215_8.jpg">https://img.50121.top/img/2024/12/241215_8.jpg</a></p>
+<p>Pixiv：125076005</p>
+<p>　</p>
+<h2 id="に、似合ってますか…？"><a href="#に、似合ってますか…？" class="headerlink" title="に、似合ってますか…？"></a>に、似合ってますか…？</h2><p><img src="https://img.50121.top/img/2024/12/241215_9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/12/241215_10.jpg">https://img.50121.top/img/2024/12/241215_10.jpg</a></p>
+<p>Pixiv：125117418</p>
+<p>　</p>
+<h2 id="呪禍ちゃん（再）"><a href="#呪禍ちゃん（再）" class="headerlink" title="呪禍ちゃん（再）"></a>呪禍ちゃん（再）</h2><p><img src="https://img.50121.top/img/2024/12/241215_11.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>原图：<a target="_blank" rel="noopener" href="https://img.50121.top/img/2024/12/241215_12.jpg">https://img.50121.top/img/2024/12/241215_12.jpg</a></p>
+<p>Pixiv：125135208</p>
+<p>　</p>
+<p>　</p>
+<h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><h2 id="“原来浏阳烟花已经到下一个层次了，太震撼了！”"><a href="#“原来浏阳烟花已经到下一个层次了，太震撼了！”" class="headerlink" title="“原来浏阳烟花已经到下一个层次了，太震撼了！”"></a>“原来浏阳烟花已经到下一个层次了，太震撼了！”</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=113621027784893&bvid=BV17tqcYPEVY&cid=27251572938&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17tqcYPEVY">https://www.bilibili.com/video/BV17tqcYPEVY</a></p>
+<p>　</p>
+<h2 id="【𝟒𝐊】太空科幻CG短片《每分钟一转》"><a href="#【𝟒𝐊】太空科幻CG短片《每分钟一转》" class="headerlink" title="【𝟒𝐊】太空科幻CG短片《每分钟一转》"></a>【𝟒𝐊】太空科幻CG短片《每分钟一转》</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=581493893&bvid=BV1b64y1A7rp&cid=1410583689&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1b64y1A7rp">https://www.bilibili.com/video/BV1b64y1A7rp</a></p>
+<p>　</p>
+<h2 id="【斯大林格勒】重温最经典片段完整版：明白了，大鲟鱼，都明白了，同志们，再见了。"><a href="#【斯大林格勒】重温最经典片段完整版：明白了，大鲟鱼，都明白了，同志们，再见了。" class="headerlink" title="【斯大林格勒】重温最经典片段完整版：明白了，大鲟鱼，都明白了，同志们，再见了。"></a>【斯大林格勒】重温最经典片段完整版：明白了，大鲟鱼，都明白了，同志们，再见了。</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=413524812&bvid=BV19V411r7D8&cid=201816729&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19V411r7D8">https://www.bilibili.com/video/BV19V411r7D8</a></p>
+<p>　</p>
+<h2 id="【军武白板】第12期：遥远的大洋水下深处潜艇通讯如何实现"><a href="#【军武白板】第12期：遥远的大洋水下深处潜艇通讯如何实现" class="headerlink" title="【军武白板】第12期：遥远的大洋水下深处潜艇通讯如何实现"></a>【军武白板】第12期：遥远的大洋水下深处潜艇通讯如何实现</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=113637486301650&bvid=BV135q8YiERA&cid=27297647555&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV135q8YiERA">https://www.bilibili.com/video/BV135q8YiERA</a></p>
+<p>　</p>
+<h2 id="颜色的本质是什么？量子力学是如何解释物体颜色的？"><a href="#颜色的本质是什么？量子力学是如何解释物体颜色的？" class="headerlink" title="颜色的本质是什么？量子力学是如何解释物体颜色的？"></a>颜色的本质是什么？量子力学是如何解释物体颜色的？</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=113642804616308&bvid=BV1ANqBYyEFt&cid=27339916432&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ANqBYyEFt">https://www.bilibili.com/video/BV1ANqBYyEFt</a></p>
+<p>　</p>
+<h2 id="如何使用纸板做一把可以发射的Colt-M1911手枪"><a href="#如何使用纸板做一把可以发射的Colt-M1911手枪" class="headerlink" title="如何使用纸板做一把可以发射的Colt M1911手枪"></a>如何使用纸板做一把可以发射的Colt M1911手枪</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=113580611475719&bvid=BV1UZ6AYwExz&cid=27134529324&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UZ6AYwExz">https://www.bilibili.com/video/BV1UZ6AYwExz</a></p>
+<p>　</p>
+<h2 id="自制立体书，附简易教程"><a href="#自制立体书，附简易教程" class="headerlink" title="自制立体书，附简易教程"></a>自制立体书，附简易教程</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=333809855&bvid=BV1hw411o7BE&cid=359201417&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1C7qdYbEYU">https://www.bilibili.com/video/BV1C7qdYbEYU</a></p>
+<p>　</p>
+<h2 id="叙利亚给全球“带路党”上的“最后一课”"><a href="#叙利亚给全球“带路党”上的“最后一课”" class="headerlink" title="叙利亚给全球“带路党”上的“最后一课”"></a>叙利亚给全球“带路党”上的“最后一课”</h2><iframe width="720" height="480" src="https://player.bilibili.com/player.html?isOutside=true&aid=113644297789180&bvid=BV1ifqBYqEfc&cid=27318486122&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<p>bilibili：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ifqBYqEfc">https://www.bilibili.com/video/BV1ifqBYqEfc</a></p>
+<p>　</p>
+<p>　</p>
+<h1 id="说点啥"><a href="#说点啥" class="headerlink" title="说点啥"></a>说点啥</h1><p>更新。</p>
+<p>　</p>
+<p>　</p>
+
+                
+              </div>
+            
+            <hr/>
+            <!-- 已修改-新增：打赏代码 开始 -->
+            <div>
+              <details style="text-align:center">
+                <summary style="font-size:1.7em; color: #f2481b;">捐赠一元，支持一下！</summary>
+                <img src="/thanks/r2net_alipay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">　
+                <img src="/thanks/r2net_wechatpay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">
+                <p>注：捐赠时如在留言中注明网名或昵称，即可被列入到感谢名单中。否则，会以佚名身份列入名单。</p>
+              </details>
+            </div>
+            <hr/>
+            <!-- 已修改-新增：打赏代码 结束 -->
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AC%94%E8%AE%B0/%E5%91%A8%E6%8A%A5/" class="category-chain-item">周报</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B9%B2%E4%BA%86%E5%95%A5/" class="print-no-link">#干了啥</a>
+      
+        <a href="/tags/%E7%AC%AC2%E5%91%A8/" class="print-no-link">#第2周</a>
+      
+        <a href="/tags/12%E6%9C%88/" class="print-no-link">#12月</a>
+      
+        <a href="/tags/2024%E5%B9%B4/" class="print-no-link">#2024年</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【干了啥】12月第2周：潜艇通讯技术、纸板M1911</div>
+      <div>https://rsreland.net/blog/202412151805/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>百二一</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年12月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202412221816/" title="【干了啥】12月第3周：电子战机、《宋朝人的日常生活》">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【干了啥】12月第3周：电子战机、《宋朝人的日常生活》</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202412082154/" title="《DearS-ディアーズ-(亲爱一族)》日文原版漫画，全8卷，已完结。">
+                        <span class="hidden-mobile">《DearS-ディアーズ-(亲爱一族)》日文原版漫画，全8卷，已完结。</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","appKey":"3xhpLOaU8oKm2IGn0JVL08dW","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://leancloud.rsreland.net","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+      <!-- 已修改-新增：相关文章 开始 -->
+      <aside class="sidebar" style="padding-left: 0rem; margin-right: 1rem; position: sticky; top: 64px;">
+        
+            <section class="related-posts">
+                <h5><b>= 相关文章 =</b></h5>
+                <ul>
+                
+                        <li><a href="/blog/202512141922/">【干了啥】12月第2周：《太空之王4》、酸黄瓜</a></li>
+                        
+                        <li><a href="/blog/202312171735/">【干了啥】12月第2周：麻绳制造方法、九州八极</a></li>
+                        
+                        <li><a href="/blog/202112121720/">【干了啥】12月第2周：《夜愿Nightwish》、《泡泡》预告片</a></li>
+                        
+                        <li><a href="/blog/202012132017/">【干了啥】12月第2周：《585号》、《断头谷》、《洋港社区》</a></li>
+                        
+                        <li><a href="/blog/202404141412/">【干了啥】4月第2周：《黑暗地牢》剧情、宫崎骏新片</a></li>
+                        
+                        <li><a href="/blog/202412291717/">【干了啥】12月第4周：光速三大问题、EVA结局解析</a></li>
+                        
+                        <li><a href="/blog/202412081904/">【干了啥】12月第1周：《BLINDSIGHT》、戏曲的行头和禁忌</a></li>
+                        
+                        <li><a href="/blog/202402111733/">【干了啥】2月第2周：科学配眼镜、《恭喜发财》</a></li>
+                        
+                        <li><a href="/blog/202405121839/">【干了啥】5月第2周：福建舰首航4K视频、《模拟江湖》</a></li>
+                        
+                </ul>
+            </section>
+        
+      </aside>
+      <!-- 已修改-新增：相关文章 结束 -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

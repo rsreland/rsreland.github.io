@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/r2net_favicon.png">
+  <link rel="icon" href="/img/r2net_favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="百二一">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这些是Comfyui中一些常用的插件（节点），包括对于界面的增强、文生图、图生文、图生视频、文生视频等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【大列表】常用Comfyui插件-2026年1月1日版">
+<meta property="og:url" content="https://rsreland.net/blog/202601012252/index.html">
+<meta property="og:site_name" content="百二一">
+<meta property="og:description" content="这些是Comfyui中一些常用的插件（节点），包括对于界面的增强、文生图、图生文、图生视频、文生视频等等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-01T14:52:32.000Z">
+<meta property="article:modified_time" content="2026-01-01T15:02:43.013Z">
+<meta property="article:author" content="百二一">
+<meta property="article:tag" content="AI绘画">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【大列表】常用Comfyui插件-2026年1月1日版 | 百二一</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rsreland.net","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","app_key":"3xhpLOaU8oKm2IGn0JVL08dW","server_url":"https://leancloud.rsreland.net","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>百二一</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/series/" target="_self">
+                <i class="iconfont icon-codeforces"></i>
+                <span>系列</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/thanks/" target="_self">
+                <i class="iconfont icon-bookmark-fill"></i>
+                <span>感谢</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/" target="_self">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/r2net_banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【大列表】常用Comfyui插件-2026年1月1日版"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-01 22:52" pubdate>
+          2026年1月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【大列表】常用Comfyui插件-2026年1月1日版</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年1月1日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这些是Comfyui中一些常用的插件（节点），包括对于界面的增强、文生图、图生文、图生视频、文生视频等等。</p>
+<p>　</p>
+<p>　</p>
+<h1 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h1><table>
+<thead>
+<tr>
+<th>插件名称</th>
+<th>插件地址</th>
+<th>插件说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ComfyUI-Manager</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ltdrdata/ComfyUI-Manager">https://github.com/ltdrdata/ComfyUI-Manager</a></td>
+<td>用于安装、更新、卸载其他插件，解决依赖问题。</td>
+</tr>
+<tr>
+<td>AIGODLIKE-ComfyUI-Translation</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/AIGODLIKE/AIGODLIKE-COMFYUI-TRANSLATION">https://github.com/AIGODLIKE/AIGODLIKE-COMFYUI-TRANSLATION</a></td>
+<td>将ComfyUI界面翻译成中文。</td>
+</tr>
+<tr>
+<td>ComfyUI-Crystools</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/crystian/ComfyUI-Crystools">https://github.com/crystian/ComfyUI-Crystools</a></td>
+<td>实时查看GPU内存、显存等使用情况。显示每张图片的生成进度和已用时间，帮助你精确估算任务完成时间。</td>
+</tr>
+<tr>
+<td>ComfyUI-Custom-Scripts</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/pythongosssss/ComfyUI-Custom-Scripts">https://github.com/pythongosssss/ComfyUI-Custom-Scripts</a></td>
+<td>内置了十几个非常实用的界面增强、快捷操作和小工具。它的核心就是优化用户界面（UI）功能。</td>
+</tr>
+<tr>
+<td>ComfyUI-KJNodes</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/kijai/ComfyUI-KJNodes">https://github.com/kijai/ComfyUI-KJNodes</a></td>
+<td>提供了海量的、用来优化您操作界面、调试工作流、增强可视化效果的小工具。</td>
+</tr>
+<tr>
+<td>ComfyUI_essentials</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/cubiq/ComfyUI_essentials">https://github.com/cubiq/ComfyUI_essentials</a></td>
+<td>提供了许多用户认为“本应该内置”在ComfyUI官方功能中，但实际上却没有的、极其实用的节点。</td>
+</tr>
+<tr>
+<td>Dynamic Thresholding</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mcmonkeyprojects/sd-dynamic-thresholding">https://github.com/mcmonkeyprojects/sd-dynamic-thresholding</a></td>
+<td>通过在采样过程中对提示词引导（CFG）进行动态、智能的调整，来直接影响图像的生成质量和创意控制。</td>
+</tr>
+<tr>
+<td>ComfyUI Inspire Pack</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ltdrdata/ComfyUI-Inspire-Pack">https://github.com/ltdrdata/ComfyUI-Inspire-Pack</a></td>
+<td>提供一系列高级节点，帮助您构建更复杂、更精细、更可控的生成流程。</td>
+</tr>
+<tr>
+<td>ComfyUI Impact Pack</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ltdrdata/ComfyUI-Impact-Pack">https://github.com/ltdrdata/ComfyUI-Impact-Pack</a></td>
+<td>先“识别”图片中的特定内容（如人脸、身体、物体），然后对这些识别出的区域进行“针对性”的增强处理。</td>
+</tr>
+<tr>
+<td>ComfyUI Impact Subpack</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ltdrdata/ComfyUI-Impact-Subpack">https://github.com/ltdrdata/ComfyUI-Impact-Subpack</a></td>
+<td>是 Impact Pack 的“专用配件”。它的唯一作用（从描述可知）就是为主包提供一个名为 “UltralyticsDetectorProvider” 的节点。</td>
+</tr>
+<tr>
+<td>ComfyUI_UltimateSDUpscale</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ssitu/ComfyUI_UltimateSDUpscale">https://github.com/ssitu/ComfyUI_UltimateSDUpscale</a></td>
+<td>功能强大的放大插件，在放大图片的同时，利用AI的“想象力”和“绘画能力”，为图片补充、修复和创造在低分辨率下丢失的细节。</td>
+</tr>
+<tr>
+<td>ComfyUI-layerdiffuse</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/huchenlei/ComfyUI-layerdiffuse">https://github.com/huchenlei/ComfyUI-layerdiffuse</a></td>
+<td>使AI在生成图片时，能直接输出带有透明通道（Alpha Channel）的图像，而不是常见的、带有白色或纯色背景的不透明图片。</td>
+</tr>
+<tr>
+<td>comfyui_controlnet_aux</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Fannovel16/comfyui_controlnet_aux">https://github.com/Fannovel16/comfyui_controlnet_aux</a></td>
+<td>从您的原始图片（如照片、草图）中，自动生成对应的、能被 ControlNet 理解的“指引图”。</td>
+</tr>
+<tr>
+<td>ComfyUI-Advanced-ControlNet</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet">https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet</a></td>
+<td>提供比原生ControlNet更丰富的预处理器和模型加载选项，控制效果更精细。</td>
+</tr>
+<tr>
+<td>ComfyUI_IPAdapter_plus</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/cubiq/ComfyUI_IPAdapter_plus">https://github.com/cubiq/ComfyUI_IPAdapter_plus</a></td>
+<td>仅仅通过上传一张参考图片，就让AI在生成新图片时，深度模仿这张图的风格、构图、色调、氛围甚至人物特征。</td>
+</tr>
+<tr>
+<td>ComfyUI-Florence2</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/kijai/ComfyUI-Florence2">https://github.com/kijai/ComfyUI-Florence2</a></td>
+<td>这是一个多功能的视觉理解模型，用于根据图像生成提示词或其他分析任务。</td>
+</tr>
+<tr>
+<td>ComfyUI-WD14-Tagger</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/pythongosssss/ComfyUI-WD14-Tagger">https://github.com/pythongosssss/ComfyUI-WD14-Tagger</a></td>
+<td>核心作用是 “看图说话”，但说的不是句子，而是一系列精准的、用逗号分隔的英文关键词标签。</td>
+</tr>
+<tr>
+<td>ComfyUI-AnimateDiff-Evolved</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved">https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved</a></td>
+<td>可以将生成的静态图片，变成一段几秒钟的连贯动态视频。</td>
+</tr>
+<tr>
+<td>ComfyUI-HunyuanVideoWrapper</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/kijai/ComfyUI-HunyuanVideoWrapper">https://github.com/kijai/ComfyUI-HunyuanVideoWrapper</a></td>
+<td>通过“混元视频”模型，直接用文字描述生成高质量、连贯的短视频片段。</td>
+</tr>
+<tr>
+<td>ComfyUI-VideoHelperSuite</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite">https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite</a></td>
+<td>是为所有涉及视频的工作流提供“加载、拆分、合成、保存”等基础操作支持的插件。</td>
+</tr>
+<tr>
+<td>RG节点</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/rgthree/rgthree-comfy">https://github.com/rgthree/rgthree-comfy</a></td>
+<td>提升搭建、管理和维护ComfyUI工作流本身的效率和体验。</td>
+</tr>
+</tbody></table>
+<p>注1：</p>
+<p>　　AnimateDiff：主要让静态的 Stable Diffusion 图片模型“动起来”，是一种“图&#x2F;文 转 动画”的技术。<br>　　HunyuanVideoWrapper：是直接调用一个原生的、为生成视频而从头训练的专用大模型，通常在大场景连贯性、物理合理性上可能表现不同。</p>
+<p>　</p>
+<p>注2：</p>
+<p>　　AnimateDiff &#x2F; HunyuanVideo 是厨师，负责“炒菜”（用AI生成视频内容）。<br>　　VideoHelperSuite 是厨房的刀、案板、锅和灶，负责“备菜”和“装盘”（把原始视频素材处理好交给厨师，再把厨师炒好的菜装盘成最终视频）。</p>
+<p>　</p>
+<p>注3：</p>
+<p>　　WD14 Tagger：输出的是标准化的、特征性的标签列表，格式紧凑，更适合直接作为Stable Diffusion的提示词使用，尤其在动漫领域。<br>　　Florence2：输出的是自然语言描述（如一段话），理解能力更通用，但生成的描述可能需要加工才能用作提示词。</p>
+<p>　</p>
+<p>　</p>
+<h1 id="履历"><a href="#履历" class="headerlink" title="履历"></a>履历</h1><p>2026年1月1日，创建列表。</p>
+<p>　</p>
+<p>　</p>
+
+                
+              </div>
+            
+            <hr/>
+            <!-- 已修改-新增：打赏代码 开始 -->
+            <div>
+              <details style="text-align:center">
+                <summary style="font-size:1.7em; color: #f2481b;">捐赠一元，支持一下！</summary>
+                <img src="/thanks/r2net_alipay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">　
+                <img src="/thanks/r2net_wechatpay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">
+                <p>注：捐赠时如在留言中注明网名或昵称，即可被列入到感谢名单中。否则，会以佚名身份列入名单。</p>
+              </details>
+            </div>
+            <hr/>
+            <!-- 已修改-新增：打赏代码 结束 -->
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8E%A8%E8%8D%90/" class="category-chain-item">推荐</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8E%A8%E8%8D%90/%E5%88%97%E8%A1%A8/" class="category-chain-item">列表</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI%E7%BB%98%E7%94%BB/" class="print-no-link">#AI绘画</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【大列表】常用Comfyui插件-2026年1月1日版</div>
+      <div>https://rsreland.net/blog/202601012252/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>百二一</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202601041921/" title="【干了啥】1月第1周：万能辣椒酱、AnimateDiff">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【干了啥】1月第1周：万能辣椒酱、AnimateDiff</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202512310952/" title="国家发展改革委 财政部关于2026年实施 大规模设备更新和消费品以旧换新政策的通知">
+                        <span class="hidden-mobile">国家发展改革委 财政部关于2026年实施 大规模设备更新和消费品以旧换新政策的通知</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","appKey":"3xhpLOaU8oKm2IGn0JVL08dW","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://leancloud.rsreland.net","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+      <!-- 已修改-新增：相关文章 开始 -->
+      <aside class="sidebar" style="padding-left: 0rem; margin-right: 1rem; position: sticky; top: 64px;">
+        
+            <section class="related-posts">
+                <h5><b>= 相关文章 =</b></h5>
+                <ul>
+                
+                        <li><a href="/blog/202010182042/">【大列表】常用PC软件-2025年12月11日版本</a></li>
+                        
+                        <li><a href="/blog/202010131137/">【大列表】中国官方网站-2024年8月31日版本</a></li>
+                        
+                        <li><a href="/blog/202010261326/">【大列表】实用网站-2025年5月23日版本</a></li>
+                        
+                        <li><a href="/blog/202103031358/">【大列表】常用公共DNS-2021年3月3日版本</a></li>
+                        
+                        <li><a href="/blog/202307191833/">【大列表】有趣hosts配置-2024年9月20日版本</a></li>
+                        
+                        <li><a href="/blog/202404011201/">【大列表】权威在线编程教程-2024年4月1日版本</a></li>
+                        
+                </ul>
+            </section>
+        
+      </aside>
+      <!-- 已修改-新增：相关文章 结束 -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

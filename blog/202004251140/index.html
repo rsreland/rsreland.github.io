@@ -1,0 +1,889 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/r2net_favicon.png">
+  <link rel="icon" href="/img/r2net_favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="百二一">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="笨办法学Python》（Learn Python The Hard Way，简称 LPTHW）是 Zed Shaw 编写的一本 Python 入门书籍。适合对计算机了解不多，没有学过编程，但对编程感兴趣的朋友学习使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《笨办法学Python（第4版）》-「Zed Shaw」编著、佚名翻译">
+<meta property="og:url" content="https://rsreland.net/blog/202004251140/index.html">
+<meta property="og:site_name" content="百二一">
+<meta property="og:description" content="笨办法学Python》（Learn Python The Hard Way，简称 LPTHW）是 Zed Shaw 编写的一本 Python 入门书籍。适合对计算机了解不多，没有学过编程，但对编程感兴趣的朋友学习使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.50121.top/img/2020/04/200425_1.png">
+<meta property="article:published_time" content="2020-04-25T03:40:52.000Z">
+<meta property="article:modified_time" content="2025-10-14T11:18:37.323Z">
+<meta property="article:author" content="百二一">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="《笨办法学Python》">
+<meta property="article:tag" content="Zed Shaw">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.50121.top/img/2020/04/200425_1.png">
+  
+  
+  
+  <title>《笨办法学Python（第4版）》-「Zed Shaw」编著、佚名翻译 | 百二一</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rsreland.net","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","app_key":"3xhpLOaU8oKm2IGn0JVL08dW","server_url":"https://leancloud.rsreland.net","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>百二一</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/series/" target="_self">
+                <i class="iconfont icon-codeforces"></i>
+                <span>系列</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/thanks/" target="_self">
+                <i class="iconfont icon-bookmark-fill"></i>
+                <span>感谢</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/" target="_self">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/r2net_banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="《笨办法学Python（第4版）》-「Zed Shaw」编著、佚名翻译"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-04-25 11:40" pubdate>
+          2020年4月25日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">《笨办法学Python（第4版）》-「Zed Shaw」编著、佚名翻译</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年10月14日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="https://img.50121.top/img/2020/04/200425_1.png" srcset="/img/loading.gif" lazyload></p>
+<p>　</p>
+<h1 id="详情"><a href="#详情" class="headerlink" title="详情"></a>详情</h1><p>书籍名称：《笨办法学Python（第4版）》<br>作者译者：「Zed Shaw」编著、佚名翻译<br>书籍规格：210毫米 x 297毫米，A4，236页，1.97MB<br>修订版本：2013年7月19日</p>
+<p>　</p>
+<p>　</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>下载地址：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1_ytlx1zTruaQZxbIHNT5gg">https://pan.baidu.com/s/1_ytlx1zTruaQZxbIHNT5gg</a> （百度网盘，提取码：t72n）</p>
+<p>　</p>
+<p>　</p>
+<h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><blockquote>
+<p><strong>目录</strong></p>
+<p>译者前言<br>前言：本办法更简单<br>习题0：准备工作<br>习题1：第一个程序<br>习题2：注释和井号<br>习题3：数字和数学计算<br>习题4：变量和命名<br>习题5：更多的变量和打印</p>
+<p>……</p>
+<p><strong>译者前言</strong></p>
+<p>《笨办法学Python》（Learn Python The Hard Way，简称 LPTHW）是 Zed Shaw 编写的一本 Python 入门书籍。适合对计算机了解不多，没有学过编程，但对编程感兴趣的朋友学习使用。这本书以习题的方式引导读者一步一步学习编程，从简单的打印一直讲到完整项目的实现。也许读完这本书并不意味着你已经学会了编程，但至少你会对编程语言以及编程这个行业有一个初步的了解。</p>
+<p>……</p>
+<p><strong>前言：笨办法更简单</strong></p>
+<p>这本小书的目的是让你起步编程。虽然书名说是“笨办法”,但其实并非如此. 所谓的“笨办法”是指本书教授的方式。在这本书的帮助下，你将通过非常简单的练习学会一门编程语言。做练习 是每个程序员的必经之路：</p>
+<ol>
+<li>做每一道习题</li>
+<li>一字不差地写出每一个程序</li>
+<li>让程序运行起来</li>
+</ol>
+<p>……</p>
+<p><strong>习题0：准备工作</strong></p>
+<p>这道习题并没有代码内容，它的主要目的是让你在计算机上安装好 Python。你应该尽量照着说明进行操作，例如 Mac OSX 默认已经安装了 Python 2，所以就不要在上面安装 Python 3 或者别的 Python 版本了。</p>
+<p>……</p>
+<p><strong>习题1：第一个程序</strong></p>
+<p>你应该在练习 0 中花了不少的时间，学会了如何安装文本编辑器、运行文本编辑器、以及如何运行命令行终端，而且你已经花时间熟悉了这些工具。请不要跳过前一个练习的内容直接进行下面的内容，这也是本书唯一的一次这样的警示。</p>
+<p>……</p>
+<p><strong>习题2：注释和井号</strong></p>
+<p>程序里的注释是很重要的。它们可以用自然语言告诉你某段代码的功能是什么。在你想要临时移除一段代码时，你还可以用注解的方式将这段代码临时禁用。接下来的练习将让你学会注释:</p>
+<p>……</p>
+<p><strong>习题3：数字和数学计算</strong></p>
+<p>每一种编程语言都包含处理数字和进行数学计算的方法。不必担心，程序员经常撒谎说他们是多么牛的数学天才，其实他们根本不是。如果他们真是数学天才，他们早就去从事数学相关的行业了，而不是写写广告程序和社交网络游戏，从人们身上偷赚点小钱而已。</p>
+<p>……</p>
+<p><strong>习题4：变量(variable)和命名</strong></p>
+<p>你已经学会了 print 和算术运算。下一步你要学的是“变量”。在编程中，变量只不过是用来指代某个东西的名字。程序员通过使用变量名可以让他们的程序读起来更像英语。而且因为程序员的记性都不怎么地，变量名可以让他们更容易记住程序的内容。如果他们没有在写程序时使用好的变量名，在下一次读到原来写的代码时他们会大为头疼的。</p>
+<p>……</p>
+<p><strong>习题5：更多的变量和打印</strong></p>
+<p>我们现在要键入更多的变量并且把它们打印出来。这次我们将使用一个叫“格式化字符串(format string)”的东西. 每一次你使用 “ 把一些文本引用起来，你就建立了一个字符串。 字符串是程序将信息展示给人的方式。你可以打印它们，可以将它们写入文件，还可以将它们发送给网站服务器，很多事情都是通过字符串交流实现的。</p>
+<p>……</p>
+</blockquote>
+<p>　</p>
+<p>　</p>
+<h1 id="资源补档"><a href="#资源补档" class="headerlink" title="资源补档"></a>资源补档</h1><p>如果您发现本文内的图片、链接或资源已经失效，则可以在本文（永久地址：<a href="https://rsreland.net/blog/202004251140/">https://rsreland.net/blog/202004251140/</a> ）下面的评论模块中留言，或者发送邮件到 <a href="mailto:&#x72;&#x73;&#x72;&#101;&#x6c;&#x61;&#110;&#100;&#64;&#49;&#x36;&#51;&#46;&#x63;&#x6f;&#109;">&#x72;&#x73;&#x72;&#101;&#x6c;&#x61;&#110;&#100;&#64;&#49;&#x36;&#51;&#46;&#x63;&#x6f;&#109;</a> 请求补档，我会在尽可能短的时间内给您答复。</p>
+<p>　</p>
+<p>　</p>
+
+                
+              </div>
+            
+            <hr/>
+            <!-- 已修改-新增：打赏代码 开始 -->
+            <div>
+              <details style="text-align:center">
+                <summary style="font-size:1.7em; color: #f2481b;">捐赠一元，支持一下！</summary>
+                <img src="/thanks/r2net_alipay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">　
+                <img src="/thanks/r2net_wechatpay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">
+                <p>注：捐赠时如在留言中注明网名或昵称，即可被列入到感谢名单中。否则，会以佚名身份列入名单。</p>
+              </details>
+            </div>
+            <hr/>
+            <!-- 已修改-新增：打赏代码 结束 -->
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%B5%84%E6%BA%90/" class="category-chain-item">资源</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%B5%84%E6%BA%90/%E7%94%B5%E5%AD%90%E4%B9%A6/" class="category-chain-item">电子书</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/%E3%80%8A%E7%AC%A8%E5%8A%9E%E6%B3%95%E5%AD%A6Python%E3%80%8B/" class="print-no-link">#《笨办法学Python》</a>
+      
+        <a href="/tags/Zed-Shaw/" class="print-no-link">#Zed Shaw</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>《笨办法学Python（第4版）》-「Zed Shaw」编著、佚名翻译</div>
+      <div>https://rsreland.net/blog/202004251140/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>百二一</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年4月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202004262109/" title="《三十六计》原文和译文">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">《三十六计》原文和译文</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202004112117/" title="本站2020年第2版背景图片：机械天使">
+                        <span class="hidden-mobile">本站2020年第2版背景图片：机械天使</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","appKey":"3xhpLOaU8oKm2IGn0JVL08dW","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://leancloud.rsreland.net","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+      <!-- 已修改-新增：相关文章 开始 -->
+      <aside class="sidebar" style="padding-left: 0rem; margin-right: 1rem; position: sticky; top: 64px;">
+        
+            <section class="related-posts">
+                <h5><b>= 相关文章 =</b></h5>
+                <ul>
+                
+                        <li><a href="/blog/202004111237/">《简明Python教程（第4版）》-「SwaroopCH」编著、「漠伦」翻译</a></li>
+                        
+                        <li><a href="/blog/202404011201/">【大列表】权威在线编程教程-2024年4月1日版本</a></li>
+                        
+                        <li><a href="/blog/202012081524/">《空战艺术》-「Pete.Bonanni」编著、「Eagle566」翻译</a></li>
+                        
+                        <li><a href="/blog/202309181540/">《中国居民膳食指南（2022）》-「中国营养学会」编著</a></li>
+                        
+                        <li><a href="/blog/202202031038/">《军地两用人才之友》续编本-「沈阳军区政治部研究室」编著</a></li>
+                        
+                        <li><a href="/blog/202202030937/">《军地两用人才之友》-「沈阳军区政治部研究室」编著</a></li>
+                        
+                        <li><a href="/blog/202011121304/">《战斗机空战战术与机动》-「Robert.L.Shaw」编著、「DOF教材组」翻译</a></li>
+                        
+                        <li><a href="/blog/202003241436/">《精神障碍诊断与统计手册（第五版）》-「美国精神医学学会」编著、「张道龙」等译</a></li>
+                        
+                        <li><a href="/blog/202209031216/">《宗教礼仪》-「北京公共交通控股（集团）有限公司」编著</a></li>
+                        
+                </ul>
+            </section>
+        
+      </aside>
+      <!-- 已修改-新增：相关文章 结束 -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/r2net_favicon.png">
+  <link rel="icon" href="/img/r2net_favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="百二一">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文包括非原创内容，转载自 http:&#x2F;&#x2F;daiyuwen.freeshell.org&#x2F;gb&#x2F;rol&#x2F;roots_of_lisp.html ，原文作者：保罗·格雷厄姆，本文翻译：Dai Yuwen 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Lisp之根源》-「保罗·格雷厄姆」编著">
+<meta property="og:url" content="https://rsreland.net/blog/202003021307/index.html">
+<meta property="og:site_name" content="百二一">
+<meta property="og:description" content="本文包括非原创内容，转载自 http:&#x2F;&#x2F;daiyuwen.freeshell.org&#x2F;gb&#x2F;rol&#x2F;roots_of_lisp.html ，原文作者：保罗·格雷厄姆，本文翻译：Dai Yuwen 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-02T05:07:47.000Z">
+<meta property="article:modified_time" content="2025-10-15T05:09:13.898Z">
+<meta property="article:author" content="百二一">
+<meta property="article:tag" content="Lisp">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>《Lisp之根源》-「保罗·格雷厄姆」编著 | 百二一</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rsreland.net","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","app_key":"3xhpLOaU8oKm2IGn0JVL08dW","server_url":"https://leancloud.rsreland.net","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>百二一</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/series/" target="_self">
+                <i class="iconfont icon-codeforces"></i>
+                <span>系列</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/thanks/" target="_self">
+                <i class="iconfont icon-bookmark-fill"></i>
+                <span>感谢</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/" target="_self">
+                <i class="iconfont icon-speakernotes"></i>
+                <span>留言</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/r2net_banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="《Lisp之根源》-「保罗·格雷厄姆」编著"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-03-02 13:07" pubdate>
+          2020年3月2日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">《Lisp之根源》-「保罗·格雷厄姆」编著</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年10月15日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="关于本文"><a href="#关于本文" class="headerlink" title="关于本文"></a>关于本文</h1><p>本文包括非原创内容，转载自 <a target="_blank" rel="noopener" href="http://daiyuwen.freeshell.org/gb/rol/roots_of_lisp.html">http://daiyuwen.freeshell.org/gb/rol/roots_of_lisp.html</a> ，版权属于原作者：保罗·格雷厄姆，本文翻译：Dai Yuwen 。</p>
+<p>　</p>
+<p>　</p>
+<h1 id="正文内容"><a href="#正文内容" class="headerlink" title="正文内容"></a>正文内容</h1><p>约翰·麦卡锡 于1960年发表了一篇非凡的论文，他在这篇论文中对编程的贡献有如 欧几里德 对几何的贡献*[1]*。他向我们展示了，在只给定几个简单的操作符和一个表示函数的记号的基础上，如何构造出一个完整的编程语言。麦卡锡称这种语 言为 Lisp ，意为 List Processing ，因为他的主要思想之一是用一种简单的数据 结构表（list）来代表代码和数据。</p>
+<p>值得注意的是，麦卡锡所作的发现，不仅是计算机史上划时代的大事，而且是一种在我们这个时代编程越来越趋向的模式。我认为目前为止只有两种真正干净利落, 始终如一的编程模式：C 语言模式和 Lisp 语言模式。此二者就象两座高地，在它们中间是尤如沼泽的低地。随着计算机变得越来越强大，新开发的语言一直在坚定地趋向于 Lisp 模式。二十年来，开发新编程语言的一个流行的秘决是，取 C 语言的计算模式，逐渐地往上加 Lisp 模式的特性，例如运行时类型和无用单元收集。</p>
+<p>在这篇文章中我尽可能用最简单的术语来解释约翰·麦卡锡所做的发现。关键是我 们不仅要学习某个人四十年前得出的有趣理论结果，而且展示编程语言的发展方向。Lisp 的不同寻常之处——也就是它优质的定义——是它能够自己来编写自己。为了理解约翰麦卡锡所表述的这个特点，我们将追溯他的步伐，并将他的数学标记转换成能够运行的 Common Lisp 代码。</p>
+<p>　</p>
+<p>　</p>
+<h2 id="七个原始操作符"><a href="#七个原始操作符" class="headerlink" title="七个原始操作符"></a>七个原始操作符</h2><p>开始我们先定义表达式。表达式或是一个原子（atom），它是一个字母序列（如 foo），或是一个由零个或多个表达式组成的表（list），表达式之间用空格分开，放入一对括号中。以下是一些表达式：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lisp">foo<br>()<br>(<span class="hljs-name">foo</span>)<br>(<span class="hljs-name">foo</span> bar)<br>(<span class="hljs-name">a</span> b (<span class="hljs-name">c</span>) d)<br></code></pre></td></tr></table></figure>
+
+<p>最后一个表达式是由四个元素组成的表，第三个元素本身是由一个元素组成的表。<br>在算术中表达式 1 + 1 得出值 2 。正确的 Lisp 表达式也有值。如果表达式 e 得出值 v ，我们说 e 返回 v 。下一步我们将定义几种表达式以及它们的返回值。<br>如果一个表达式是表，我们称第一个元素为操作符，其余的元素为自变量。我们将定义七个原始（从公理的意义上说）操作符：quote、atom、eq、car、cdr、cons、和 cond 。</p>
+<p>　</p>
+<h3 id="quote"><a href="#quote" class="headerlink" title="quote"></a>quote</h3><p>(quote x) 返回 x 。为了可读性我们把 (quote x) 简记为 ‘x 。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">quote</span> a)<br>a<br>&gt; &#x27;a<br>a<br>&gt; (<span class="hljs-name">quote</span> (a b c))<br>(<span class="hljs-name">a</span> b c)<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="atom"><a href="#atom" class="headerlink" title="atom"></a>atom</h3><p>(atom x) 返回原子 t 如果 x 的值是一个 原子 或是 空表 ，否则返回 () 。在 Lisp 中我们按惯例用原子 t 表示真，而用空表表示假。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">atom</span> &#x27;a)<br><span class="hljs-literal">t</span><br>&gt; (<span class="hljs-name">atom</span> &#x27;(a b c))<br>()<br>&gt; (<span class="hljs-name">atom</span> &#x27;())<br><span class="hljs-literal">t</span><br></code></pre></td></tr></table></figure>
+
+<p>既然有了一个自变量需要求值的操作符，我们可以看一下 quote 的作用。通过引用 (quote) 一个表，我们避免它被求值。一个未被引用的表作为自变量传给象 atom 这样的操作符将被视为代码：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">atom</span> (<span class="hljs-name">atom</span> &#x27;a))<br><span class="hljs-literal">t</span><br></code></pre></td></tr></table></figure>
+
+<p>反之一个被引用的表仅被视为表，在此例中就是有两个元素的表：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">atom</span> &#x27;(atom &#x27;a))<br>()<br></code></pre></td></tr></table></figure>
+
+<p>这与我们在英语中使用引号的方式一致。Cambridge（剑桥）是一个位于麻萨诸塞州有90000人口的城镇。而“Cambridge”是一个由9个字母组成的单词。</p>
+<p>引用看上去可能有点奇怪因为极少有其它语言有类似的概念。它和 Lisp 最与众不同的特征紧密联系：代码和数据由相同的数据结构构成，而我们用 quote 操作符来区分它们。</p>
+<p>　</p>
+<h3 id="eq"><a href="#eq" class="headerlink" title="eq"></a>eq</h3><p>(eq x y) 返回 t 如果 x 和 y 的值是同一个原子或都是空表，否则返回 () 。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">eq</span> &#x27;a &#x27;a)<br><span class="hljs-literal">t</span><br>&gt; (<span class="hljs-name">eq</span> &#x27;a &#x27;b)<br>()<br>&gt; (<span class="hljs-name">eq</span> &#x27;() &#x27;())<br><span class="hljs-literal">t</span><br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="car"><a href="#car" class="headerlink" title="car"></a>car</h3><p>(car x) 期望 x 的值是一个表并且返回 x 的第一个元素。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">car</span> &#x27;(a b c))<br>a<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="cdr"><a href="#cdr" class="headerlink" title="cdr"></a>cdr</h3><p>(cdr x) 期望 x 的值是一个表并且返回 x 的第一个元素之后的所有元素。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">cdr</span> &#x27;(a b c))<br>(<span class="hljs-name">b</span> c)<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="cons"><a href="#cons" class="headerlink" title="cons"></a>cons</h3><p>(cons x y) 期望 y 的值是一个表并且返回一个新表，它的第一个元素是 x 的值，后面跟着 y 的值的各个元素。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">cons</span> &#x27;a &#x27;(b c))<br>(<span class="hljs-name">a</span> b c)<br>&gt; (<span class="hljs-name">cons</span> &#x27;a (<span class="hljs-name">cons</span> &#x27;b (<span class="hljs-name">cons</span> &#x27;c &#x27;())))<br>(<span class="hljs-name">a</span> b c)<br>&gt; (<span class="hljs-name">car</span> (<span class="hljs-name">cons</span> &#x27;a &#x27;(b c)))<br>a<br>&gt; (<span class="hljs-name">cdr</span> (<span class="hljs-name">cons</span> &#x27;a &#x27;(b c)))<br>(<span class="hljs-name">b</span> c)<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="cond"><a href="#cond" class="headerlink" title="cond"></a>cond</h3><p>(cond (p1…e1) …(pn…en)) 的求值规则如下。p 表达式依次求值直到有一个返回 t 。如果能找到这样的 p 表达式，相应的 e 表达式的值作为整个 cond 表达式的返回值。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">cond</span> ((<span class="hljs-name">eq</span> &#x27;a &#x27;b) &#x27;first)<br>        ((<span class="hljs-name">atom</span> &#x27;a)  &#x27;second))<br>second<br></code></pre></td></tr></table></figure>
+
+<p>当表达式以七个原始操作符中的五个开头时，它的自变量总是要求值的*[2]*。我们称这样的操作符为函数。</p>
+<p>　</p>
+<p>　</p>
+<h2 id="函数的表示"><a href="#函数的表示" class="headerlink" title="函数的表示"></a>函数的表示</h2><p>接着我们定义一个记号来描述函数。函数表示为 (lambda (p1…pn) e) ，其中 p1…pn 是原子（叫做参数），e 是表达式。如果表达式的第一个元素形式如下：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">((<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (p1...pn) e) a1...an)<br></code></pre></td></tr></table></figure>
+
+<p>则称为函数调用。它的值计算如下，每一个表达式 ai 先求值，然后 e 再求值。在 e 的求值过程中，每个出现在 e 中的pi 的值是相应的 ai 在最近一次的函数调用中的值。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; ((<span class="hljs-name">lambda</span> (<span class="hljs-name">x</span>) (<span class="hljs-name">cons</span> x &#x27;(b))) &#x27;a)<br>(<span class="hljs-name">a</span> b)<br>&gt; ((<span class="hljs-name">lambda</span> (<span class="hljs-name">x</span> y) (<span class="hljs-name">cons</span> x (<span class="hljs-name">cdr</span> y)))<br>   &#x27;z<br>   &#x27;(a b c))<br>(<span class="hljs-name">z</span> b c)<br></code></pre></td></tr></table></figure>
+
+<p>如果一个表达式的第一个元素 f 是原子且 f 不是原始操作符</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">(f <span class="hljs-built_in">a1</span>...an)<br></code></pre></td></tr></table></figure>
+
+<p>并且 f 的值是一个函数 (lambda (p1…pn)) ，则以上表达式的值就是</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">((<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (p1...pn) e) a1...an)<br></code></pre></td></tr></table></figure>
+
+<p>的值。换句话说，参数在表达式中不但可以作为自变量也可以作为操作符使用：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; ((<span class="hljs-name">lambda</span> (<span class="hljs-name">f</span>) (<span class="hljs-name">f</span> &#x27;(b c)))<br>   &#x27;(lambda (x) (cons &#x27;a x)))<br>(<span class="hljs-name">a</span> b c)<br></code></pre></td></tr></table></figure>
+
+<p>有另外一个函数记号使得函数能提及它本身，这样我们就能方便地定义递归函数*[3]*。记号</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name">label</span> f (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (p1...pn) e))<br></code></pre></td></tr></table></figure>
+
+<p>表示一个象 (lambda (p1…pn) e) 那样的函数，加上这样的特性：任何出现在 e 中的 f 将求值为此 label 表达式，就好象 f 是此函数的参数。</p>
+<p>假设我们要定义函数 (subst x y z) ，它取表达式 x ，原子 y 和表 z 做参数，返回一个象 z 那样的表，不过 z 中出现的 y （在任何嵌套层次上）被 x 代替。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">subst</span> &#x27;m &#x27;b &#x27;(a b (a b c) d))<br>(<span class="hljs-name">a</span> m (<span class="hljs-name">a</span> m c) d)<br></code></pre></td></tr></table></figure>
+
+<p>我们可以这样表示此函数</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name">label</span> subst (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (x y z)<br>                     (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">atom</span> z)<br>                            (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">eq</span> z y) x)<br>                                  (<span class="hljs-symbol">&#x27;t</span> z)))<br>                            (<span class="hljs-symbol">&#x27;t</span> (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> (<span class="hljs-name">subst</span> x y (<span class="hljs-name"><span class="hljs-built_in">car</span></span> z))<br>                                (<span class="hljs-name">subst</span> x y (<span class="hljs-name"><span class="hljs-built_in">cdr</span></span> z)))))))<br></code></pre></td></tr></table></figure>
+
+<p>我们简记 f&#x3D;(label f (lambda (p1…pn) e)) 为</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clojure">(<span class="hljs-name">defun</span> f (<span class="hljs-name">p1...pn</span>) e)<br></code></pre></td></tr></table></figure>
+
+<p>于是</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name">defun</span> subst (<span class="hljs-name">x</span> y z)<br>             (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">atom</span> z)<br>                    (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">eq</span> z y) x)<br>                          (<span class="hljs-symbol">&#x27;t</span> z)))<br>                    (<span class="hljs-symbol">&#x27;t</span> (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> (<span class="hljs-name">subst</span> x y (<span class="hljs-name"><span class="hljs-built_in">car</span></span> z))<br>                        (<span class="hljs-name">subst</span> x y (<span class="hljs-name"><span class="hljs-built_in">cdr</span></span> z))))))<br></code></pre></td></tr></table></figure>
+
+<p>偶然地我们在这儿看到如何写 cond 表达式的缺省子句。第一个元素是 ‘t 的子句总是会成功的。于是</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name"><span class="hljs-built_in">cond</span></span> (<span class="hljs-name">x</span> y) (<span class="hljs-symbol">&#x27;t</span> z))<br></code></pre></td></tr></table></figure>
+
+<p>等同于我们在某些语言中写的</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gml"><span class="hljs-keyword">if</span> <span class="hljs-variable language_">x</span> <span class="hljs-keyword">then</span> <span class="hljs-variable language_">y</span> <span class="hljs-keyword">else</span> z<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<p>　</p>
+<h2 id="一些函数"><a href="#一些函数" class="headerlink" title="一些函数"></a>一些函数</h2><p>既然我们有了表示函数的方法，我们根据七个原始操作符来定义一些新的函数。为了方便我们引进一些常见模式的简记法，我们用 cxr ，其中 x 是 a 或 d 的序列，来简记相应的 car 和 cdr 的组合。比如 (cadr e) 是 (car (cdr e)) 的简记，它返回 e 的第二个元素。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">cadr</span> &#x27;((a b) (c d) e))<br>(<span class="hljs-name">c</span> d)<br>&gt; (<span class="hljs-name">caddr</span> &#x27;((a b) (c d) e))<br>e<br>&gt; (<span class="hljs-name">cdar</span> &#x27;((a b) (c d) e))<br>(<span class="hljs-name">b</span>)<br></code></pre></td></tr></table></figure>
+
+<p>我们还用 (list e1…en) 表示 (cons e1…(cons en‘()) …) 。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">cons</span> &#x27;a (<span class="hljs-name">cons</span> &#x27;b (<span class="hljs-name">cons</span> &#x27;c &#x27;())))<br>(<span class="hljs-name">a</span> b c)<br>&gt; (<span class="hljs-name">list</span> &#x27;a &#x27;b &#x27;c)<br>(<span class="hljs-name">a</span> b c)<br></code></pre></td></tr></table></figure>
+
+<p>现在我们定义一些新函数。我在函数名后面加了点，以区别函数和定义它们的原始函数，也避免与现存的 Common Lisp 的函数冲突。</p>
+<p>　</p>
+<h3 id="null"><a href="#null" class="headerlink" title="null."></a>null.</h3><p>(null. x) 测试它的自变量是否是空表。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> null. (<span class="hljs-name">x</span>)<br>               (<span class="hljs-name">eq</span> x &#x27;()))<br><br>&gt; (<span class="hljs-name">null</span>. &#x27;a)<br>()<br>&gt; (<span class="hljs-name">null</span>. &#x27;())<br><span class="hljs-literal">t</span><br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="and"><a href="#and" class="headerlink" title="and."></a>and.</h3><p>(and. x y) 返回 t 如果它的两个自变量都是 t，否则返回 () 。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> and. (<span class="hljs-name">x</span> y)<br>              (<span class="hljs-name">cond</span> (<span class="hljs-name">x</span> (<span class="hljs-name">cond</span> (<span class="hljs-name">y</span> &#x27;t) (&#x27;t &#x27;())))<br>                    (&#x27;t &#x27;())))<br><br>&gt; (<span class="hljs-name">and</span>. (<span class="hljs-name">atom</span> &#x27;a) (<span class="hljs-name">eq</span> &#x27;a &#x27;a))<br><span class="hljs-literal">t</span><br>&gt; (<span class="hljs-name">and</span>. (<span class="hljs-name">atom</span> &#x27;a) (<span class="hljs-name">eq</span> &#x27;a &#x27;b))<br>()<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="not"><a href="#not" class="headerlink" title="not."></a>not.</h3><p>(not. x) 返回 t 如果它的自变量返回 () ，返回 () 如果它的自变量返回 t 。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> not. (<span class="hljs-name">x</span>)<br>              (<span class="hljs-name">cond</span> (<span class="hljs-name">x</span> &#x27;())<br>                    (&#x27;t &#x27;t)))<br><br>&gt; (<span class="hljs-name">not</span>. (<span class="hljs-name">eq</span> &#x27;a &#x27;a))<br>()<br>&gt; (<span class="hljs-name">not</span>. (<span class="hljs-name">eq</span> &#x27;a &#x27;b))<br><span class="hljs-literal">t</span><br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="append"><a href="#append" class="headerlink" title="append."></a>append.</h3><p>(append. x y) 取两个表并返回它们的连结。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> append. (<span class="hljs-name">x</span> y)<br>                 (<span class="hljs-name">cond</span> ((<span class="hljs-name">null</span>. x) y)<br>                       (&#x27;t (<span class="hljs-name">cons</span> (<span class="hljs-name">car</span> x) (<span class="hljs-name">append</span>. (<span class="hljs-name">cdr</span> x) y)))))<br><br>&gt; (<span class="hljs-name">append</span>. &#x27;(a b) &#x27;(c d))<br>(<span class="hljs-name">a</span> b c d)<br>&gt; (<span class="hljs-name">append</span>. &#x27;() &#x27;(c d))<br>(<span class="hljs-name">c</span> d)<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="pair"><a href="#pair" class="headerlink" title="pair."></a>pair.</h3><p>(pair. x y) 取两个相同长度的表，返回一个由双元素表构成的表，双元素表是相应位置的 x 和 y 的元素对。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> pair. (<span class="hljs-name">x</span> y)<br>               (<span class="hljs-name">cond</span> ((<span class="hljs-name">and</span>. (<span class="hljs-name">null</span>. x) (<span class="hljs-name">null</span>. y)) &#x27;())<br>                     ((<span class="hljs-name">and</span>. (<span class="hljs-name">not</span>. (<span class="hljs-name">atom</span> x)) (<span class="hljs-name">not</span>. (<span class="hljs-name">atom</span> y)))<br>                     (<span class="hljs-name">cons</span> (<span class="hljs-name">list</span> (<span class="hljs-name">car</span> x) (<span class="hljs-name">car</span> y))<br>                           (<span class="hljs-name">pair</span>. (<span class="hljs-name">cdr</span>) (<span class="hljs-name">cdr</span> y))))))<br><br>&gt; (<span class="hljs-name">pair</span>. &#x27;(x y z) &#x27;(a b c))<br>((<span class="hljs-name">x</span> a) (<span class="hljs-name">y</span> b) (<span class="hljs-name">z</span> c))<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<h3 id="assoc"><a href="#assoc" class="headerlink" title="assoc."></a>assoc.</h3><p>(assoc. x y) 取原子 x 和形如 pair. 函数所返回的表 y ，返回 y 中第一个符合如下条件的表的第二个元素：它的第一个元素是 x 。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> assoc. (<span class="hljs-name">x</span> y)<br>                (<span class="hljs-name">cond</span> ((<span class="hljs-name">eq</span> (<span class="hljs-name">caar</span> y) x) (<span class="hljs-name">cadar</span> y))<br>                      (&#x27;t (<span class="hljs-name">assoc</span>. x (<span class="hljs-name">cdr</span> y)))))<br><br>&gt; (<span class="hljs-name">assoc</span>. &#x27;x &#x27;((x a) (y b)))<br>a<br>&gt; (<span class="hljs-name">assoc</span>. &#x27;x &#x27;((x new) (x a) (y b)))<br>new<br></code></pre></td></tr></table></figure>
+
+<p>　</p>
+<p>　</p>
+<h2 id="一个惊喜"><a href="#一个惊喜" class="headerlink" title="一个惊喜"></a>一个惊喜</h2><p>因此我们能够定义函数来连接表，替换表达式等等。也许算是一个优美的表示法，那下一步呢？现在惊喜来了。我们可以写一个函数作为我们语言的解释器：此函数取任意 Lisp 表达式作自变量并返回它的值。如下所示：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">defun</span> eval. (<span class="hljs-name">e</span> a)<br>               (<span class="hljs-name">cond</span> <br>                    ((<span class="hljs-name">atom</span> e) (<span class="hljs-name">assoc</span>. e a))<br>                    ((<span class="hljs-name">atom</span> (<span class="hljs-name">car</span> e))<br>                     (<span class="hljs-name">cond</span> <br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;quote) (<span class="hljs-name">cadr</span> e))<br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;atom) (<span class="hljs-name">atom</span> (<span class="hljs-name">eval</span>. (<span class="hljs-name">cadr</span> e) a)))<br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;eq) (<span class="hljs-name">eq</span> (<span class="hljs-name">eval</span>. (<span class="hljs-name">cadr</span> e) a)<br>                                                (<span class="hljs-name">eval</span>. (<span class="hljs-name">caddr</span> e) a)))<br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;car) (<span class="hljs-name">car</span> (<span class="hljs-name">eval</span>. (<span class="hljs-name">cadr</span> e) a)))<br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;cdr) (<span class="hljs-name">cdr</span> (<span class="hljs-name">eval</span>. (<span class="hljs-name">cadr</span> e) a)))<br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;cons) (<span class="hljs-name">cons</span> (<span class="hljs-name">eval</span>. (<span class="hljs-name">cadr</span> e) a)<br>                                                    (<span class="hljs-name">eval</span>. (<span class="hljs-name">caddr</span> e) a)))<br>                          ((<span class="hljs-name">eq</span> (<span class="hljs-name">car</span> e) &#x27;cond) (<span class="hljs-name">evcon</span>. (<span class="hljs-name">cdr</span> e) a))<br>                          (&#x27;t (<span class="hljs-name">eval</span>. (<span class="hljs-name">cons</span> (<span class="hljs-name">assoc</span>. (<span class="hljs-name">car</span> e) a)<br>                                           (<span class="hljs-name">cdr</span> e))<br>                                      a))))<br>                    ((<span class="hljs-name">eq</span> (<span class="hljs-name">caar</span> e) &#x27;label)<br>                     (<span class="hljs-name">eval</span>. (<span class="hljs-name">cons</span> (<span class="hljs-name">caddar</span> e) (<span class="hljs-name">cdr</span> e))<br>                            (<span class="hljs-name">cons</span> (<span class="hljs-name">list</span> (<span class="hljs-name">cadar</span> e) (<span class="hljs-name">car</span> e)) a)))<br>                    ((<span class="hljs-name">eq</span> (<span class="hljs-name">caar</span> e) &#x27;lambda)<br>                     (<span class="hljs-name">eval</span>. (<span class="hljs-name">caddar</span> e)<br>                            (<span class="hljs-name">append</span>. (<span class="hljs-name">pair</span>. (<span class="hljs-name">cadar</span> e) (<span class="hljs-name">evlis</span>. (<span class="hljs-name">cdr</span>  e) a))<br>                                      a)))))<br><br>(<span class="hljs-name">defun</span> evcon. (<span class="hljs-name">c</span> a)<br>           (<span class="hljs-name">cond</span> ((<span class="hljs-name">eval</span>. (<span class="hljs-name">caar</span> c) a)<br>                 (<span class="hljs-name">eval</span>. (<span class="hljs-name">cadar</span> c) a))<br>                (&#x27;t (<span class="hljs-name">evcon</span>. (<span class="hljs-name">cdr</span> c) a))))<br><br>(<span class="hljs-name">defun</span> evlis. (<span class="hljs-name">m</span> a)<br>           (<span class="hljs-name">cond</span> ((<span class="hljs-name">null</span>. m) &#x27;())<br>                (&#x27;t (<span class="hljs-name">cons</span> (<span class="hljs-name">eval</span>.  (<span class="hljs-name">car</span> m) a)<br>                        (<span class="hljs-name">evlis</span>. (<span class="hljs-name">cdr</span> m) a)))))<br></code></pre></td></tr></table></figure>
+
+<p>eval. 的定义比我们以前看到的都要长，让我们考虑它的每一部分是如何工作的。</p>
+<p>eval. 有两个自变量：e 是要求值的表达式，a 是由一些赋给原子的值构成的表，这些值有点象函数调用中的参数。这个形如 pair. 的返回值的表叫做环境。正是为了构造和搜索这种表我们才写了 pair. 和 assoc. 。</p>
+<p>eval. 的骨架是一个有四个子句的 cond 表达式。如何对表达式求值取决于它的类型。第一个子句处理原子。如果 e 是原子，我们在环境中寻找它的值：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">eval</span>. &#x27;x &#x27;((x a) (y b)))<br>a<br></code></pre></td></tr></table></figure>
+
+<p>第二个子句是另一个 cond ，它处理形如 (a …) 的表达式，其中 a 是原子。这包括所有的原始操作符，每个对应一条子句。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">eval</span>. &#x27;(eq &#x27;a &#x27;a) &#x27;())<br><span class="hljs-literal">t</span><br>&gt; (<span class="hljs-name">eval</span>. &#x27;(cons x &#x27;(b c))<br>         &#x27;((x a) (y b)))<br>(<span class="hljs-name">a</span> b c)<br></code></pre></td></tr></table></figure>
+
+<p>这几个子句（除了 quote）都调用 eval. 来寻找自变量的值。</p>
+<p>最后两个子句更复杂些。为了求 cond 表达式的值我们调用了一个叫 evcon. 的辅助函数。它递归地对 cond 子句进行求值，寻找第一个元素返回 t 的子句。如果找到了这样的子句，它返回此子句的第二个元素。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lisp">&gt; (<span class="hljs-name">eval</span>. &#x27;(cond ((atom x) &#x27;atom)<br>                (&#x27;<span class="hljs-literal">t</span> &#x27;list))<br>         &#x27;((x &#x27;(a b))))<br>list<br></code></pre></td></tr></table></figure>
+
+<p>第二个子句的最后部分处理函数调用。它把原子替换为它的值（应该是 lambda 或 label 表达式）然后对所得结果表达式求值。于是</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name">eval.</span> &#x27;(f &#x27;(b c))<br>       &#x27;((f (lambda (x) (cons <span class="hljs-symbol">&#x27;a</span> x)))))<br></code></pre></td></tr></table></figure>
+
+<p>变为</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">eval.</span> &#x27;((<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span>) (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> &#x27;a x)) &#x27;(<span class="hljs-name">b</span> c))<br>       &#x27;((<span class="hljs-name">f</span> (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span>) (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> &#x27;a x)))))<br></code></pre></td></tr></table></figure>
+
+<p>它返回 (a b c) 。</p>
+<p>eval. 的最后 cond 两个子句处理第一个元素是 lambda 或 label 的函数调用。为了对 label 表达式求值，先把函数名和函数本身压入环境，然后调用 eval. 对一个内部有 lambda 的表达式求值。即：</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">eval.</span> &#x27;((<span class="hljs-name">label</span> firstatom (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span>)<br>                          (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">atom</span> x) x)<br>                                (<span class="hljs-name">&#x27;t</span> (<span class="hljs-name">firstatom</span> (<span class="hljs-name"><span class="hljs-built_in">car</span></span> x))))))<br>       y)<br>       &#x27;((<span class="hljs-name">y</span> ((<span class="hljs-name">a</span> b) (<span class="hljs-name">c</span> d)))))<br></code></pre></td></tr></table></figure>
+
+<p>变为</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">eval.</span> &#x27;((<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span>)<br>                 (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">atom</span> x) x)<br>                       (<span class="hljs-name">&#x27;t</span> (<span class="hljs-name">firstatom</span> (<span class="hljs-name"><span class="hljs-built_in">car</span></span> x)))))<br>       y)<br>       &#x27;((<span class="hljs-name">firstatom</span><br>                   (<span class="hljs-name">label</span> firstatom (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span>)<br>                                            (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">atom</span> x) x)<br>                                                  (<span class="hljs-name">&#x27;t</span> (<span class="hljs-name">firstatom</span> (<span class="hljs-name"><span class="hljs-built_in">car</span></span> x)))))))<br>       (<span class="hljs-name">y</span> ((<span class="hljs-name">a</span> b) (<span class="hljs-name">c</span> d)))))<br></code></pre></td></tr></table></figure>
+
+<p>最终返回 a 。</p>
+<p>最后,对形如 ((lambda (p1…pn) e) a1…an) 的表达式求值，先调用 evlis. 来求得自变量 (a1…an) 对应的值(v1…vn) ，把 (p1v1)…(pnvn) 添加到环境里，然后对 e 求值。于是</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">eval.</span> &#x27;((<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span> y) (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> x (<span class="hljs-name"><span class="hljs-built_in">cdr</span></span> y)))<br>        &#x27;a<br>        &#x27;(<span class="hljs-name">b</span> c d))<br>        &#x27;())<br></code></pre></td></tr></table></figure>
+
+<p>变为</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">eval.</span> &#x27;(<span class="hljs-name"><span class="hljs-built_in">cons</span></span> x (<span class="hljs-name"><span class="hljs-built_in">cdr</span></span> y))<br>       &#x27;((<span class="hljs-name">x</span> a) (<span class="hljs-name">y</span> (<span class="hljs-name">b</span> c d))))<br></code></pre></td></tr></table></figure>
+
+<p>最终返回 (a c d) 。</p>
+<p>　</p>
+<p>　</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>既然理解了 eval 是如何工作的，让我们回过头考虑一下这意味着什么。我们在这儿得到了一个非常优美的计算模型。仅用quote、atom、eq、car、cdr、cons、和 cond ，我们定义了函数 eval. ，它事实上实现了我们的语言，用它可以定义任何我们想要的额外的函数。</p>
+<p>当然早已有了各种计算模型——最著名的是图灵机。但是图灵机程序难以读懂。如果你要一种描述算法的语言，你可能需要更抽象的，而这就是约翰麦卡锡定义 Lisp 的目标之一。</p>
+<p>约翰麦卡锡于1960年定义的语言还缺不少东西。它没有副作用，没有连续执行（它得和副作用在一起才有用），没有实际可用的数*[4]<em>，没有动态可视域。但这些限制可以令人惊讶地用极少的额外代码来补救。Steele 和 Sussman 在一篇叫做“解释器的艺术”的著名论文中描述了如何做到这点</em>[5]*。</p>
+<p>如果你理解了约翰麦卡锡的 eval ，那你就不仅仅是理解了程序语言历史中的一个阶段。这些思想至今仍是 Lisp 的语义核心。所以从某种意义上，学习约翰·麦卡锡的原著向我们展示了 Lisp 究竟是什么。与其说 Lisp 是麦卡锡的设计，不如说是他的发现。它不是生来就是一门用于人工智能，快速原型开发或同等层次任务的语言。它是你试图公理化计算的结果（之一）。</p>
+<p>随着时间的推移，中级语言，即被中间层程序员使用的语言，正一致地向 Lisp 靠近。因此通过理解 eval 你正在明白将来的主流计算模式会是什么样。</p>
+<p>　</p>
+<p>　</p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>把约翰·麦卡锡的记号翻译为代码的过程中我尽可能地少做改动。我有过让代码更容易阅读的念头，但是我还是想保持原汁原味。</p>
+<p>在约翰麦卡锡的论文中，假用 f 来表示，而不是空表。我用空表表示假以使例子能在 Common Lisp 中运行。（fixme）</p>
+<p>我略过了构造 dotted pairs ，因为你不需要它来理解 eval. 我也没有提 apply ，虽然是 apply（它的早期形式，主要作用是引用自变量），被约翰·麦卡锡在1960年称为普遍函数，eval 只是不过是被 apply 调用的子程序来完成所有的工作。</p>
+<p>我定义了 list 和 cxr 等作为简记法因为麦卡锡就是这么做的。实际上 cxr 等可以被定义为普通的函数。List 也可以这样，如果我们修改eval ，这很容易做到，让函数可以接受任意数目的自变量。</p>
+<p>麦卡锡的论文中只有五个原始操作符。他使用了 cond 和 quote ，但可能把它们作为他的元语言的一部分。同样他也没有定义逻辑操作符 and 和 not ，这不是个问题，因为它们可以被定义成合适的函数。</p>
+<p>在 eval. 的定义中我们调用了其它函数如 pair. 和 assoc. ，但任何我们用原始操作符定义的函数调用都可以用 eval. 来代替。即</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">assoc.</span> (<span class="hljs-name"><span class="hljs-built_in">car</span></span> e) a)<br></code></pre></td></tr></table></figure>
+
+<p>能写成</p>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs hy">(<span class="hljs-name">eval.</span> &#x27;((<span class="hljs-name">label</span> assoc.<br>                (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (<span class="hljs-name">x</span> y)<br>                        (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">eq</span> (<span class="hljs-name">caar</span> y) x) (<span class="hljs-name">cadar</span> y))<br>                              (<span class="hljs-name">&#x27;t</span> (<span class="hljs-name">assoc.</span> x (<span class="hljs-name"><span class="hljs-built_in">cdr</span></span> y))))))<br>       (<span class="hljs-name"><span class="hljs-built_in">car</span></span> e)<br>       a)<br>       (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> (<span class="hljs-name">list</span> &#x27;e e) (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> (<span class="hljs-name">list</span> &#x27;a a) a)))<br></code></pre></td></tr></table></figure>
+
+<p>麦卡锡的 eval 有一个错误。第16行是（相当于）(evlis. (cdr e) a) 而不是 (cdr e) ，这使得自变量在一个有名函数的调用中被求值两次。这显示当论文发表的时候，eval 的这种描述还没有用 IBM 704 机器语言实现。它还证明了如果不去运行程序，要保证不管多短的程序的正确性是多么困难。</p>
+<p>我还在麦卡锡的论文中碰到一个问题。在定义了 eval 之后，他继续给出了一些更高级的函数——接受其它函数作为自变量的函数。他定义了 maplist ：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name">label</span> maplist<br>              (<span class="hljs-name"><span class="hljs-built_in">lambda</span></span> (x f)<br>                      (<span class="hljs-name"><span class="hljs-built_in">cond</span></span> ((<span class="hljs-name">null</span> x) &#x27;())<br>                            (<span class="hljs-symbol">&#x27;t</span> (<span class="hljs-name"><span class="hljs-built_in">cons</span></span> (<span class="hljs-name">f</span> x) (<span class="hljs-name">maplist</span> (<span class="hljs-name"><span class="hljs-built_in">cdr</span></span> x) f))))))<br></code></pre></td></tr></table></figure>
+
+<p>然后用它写了一个做微分的简单函数 diff. 但是 diff 传给 maplist 一个用 x 做参数的函数，对它的引用被 maplist 中的参数 x 所捕获*[6]*。</p>
+<p>这是关于动态可视域危险性的雄辩证据，即使是最早的更高级函数的例子也因为它而出错。可能麦卡锡在1960年还没有充分意识到动态可视域的含意。动态可视域令人惊异地在 Lisp 实现中存在了相当长的时间——直到 Sussman 和 Steele 于1975年开发了 Scheme 。词法可视域没使 eval 的定义复杂多少，却使编译器更难写了。</p>
+<p>　</p>
+<p>　</p>
+<h2 id="这篇文章"><a href="#这篇文章" class="headerlink" title="这篇文章"></a>这篇文章</h2><p>This document was generated using the LaTeX2HTML translator Version 2K.1beta (1.48)</p>
+<p>Copyright © 1993, 1994, 1995, 1996, Nikos Drakos, Computer Based Learning Unit, University of Leeds.</p>
+<p>Copyright © 1997, 1998, 1999, Ross Moore, Mathematics Department, Macquarie University, Sydney.</p>
+<p>The command line arguments were: latex2html -split&#x3D;0 roots_of_lisp.tex</p>
+<p>The translation was initiated by Dai Yuwen on 2003-10-24</p>
+<p>　</p>
+<p>　</p>
+<h2 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h2><blockquote>
+<p>… 欧几里德对几何的贡献*[1]*。</p>
+</blockquote>
+<p>“Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part1.” Communication of the ACM 3:4, April 1960, pp. 184-195.</p>
+<blockquote>
+<p>… 当表达式以七个原始操作符中的五个开头时，它的自变量总是要求值的*[2]*。</p>
+</blockquote>
+<p>以另外两个操作符 quote 和 cond 开头的表达式以不同的方式求值。当 quote 表达式求值时，它的自变量不被求值，而是作为整个表达式的值返回。在一个正确的 cond 表达式中，只有 L 形路径上的子表达式会被求值。</p>
+<blockquote>
+<p>… 数*[3]*。</p>
+</blockquote>
+<p>逻辑上我们不需要为了这定义一个新的记号。在现有的记号中用一个叫做 Y 组合器的函数上的函数，我们可以定义递归函数。可能麦卡锡在写 这篇论文的时候还不知道 Y 组合器。无论如何，label 可读性更强。</p>
+<blockquote>
+<p>… 没有实际可用的数*[4]*。</p>
+</blockquote>
+<p>在麦卡锡的1960年的 Lisp 中，做算术是可能的，比如用一个有 n 个原子的表表示数 n 。</p>
+<blockquote>
+<p>… 的艺术”的著名论文中描述了如何做到这点*[5]*。</p>
+</blockquote>
+<p>Guy Lewis Steele, Jr. and Gerald Jay Sussman, “The Art of the Interpreter, or the Modularity Complex(Parts Zero,One,and Two),” MIT AL Lab Memo 453, May 1978.</p>
+<blockquote>
+<p>… 对它的引用被 maplist 中的参数 x 所捕获*[6]*。</p>
+</blockquote>
+<p>当代的 Lisp 程序员在这儿会用 mapcar 代替 maplist 。这个例子解开了一个谜团：maplist 为什么会在 Common Lisp 中。它是最早的映射函数，mapcar 是后来增加的。</p>
+<p>　</p>
+<p>　</p>
+<h1 id="责任声明"><a href="#责任声明" class="headerlink" title="责任声明"></a>责任声明</h1><p>如果转载本文侵犯到您的权利和利益，首先请允许我对此表达深深的歉意，其次我将在收到您的确认信息后，立刻核实并删除相关文章。对于给您带来的伤害，再次表示歉意。</p>
+<p>　</p>
+<p>　</p>
+<h1 id="义务声明"><a href="#义务声明" class="headerlink" title="义务声明"></a>义务声明</h1><ol>
+<li>我保证注明文档引用地址，以便其他人可以找到原文档。</li>
+<li>我保证在原文档被修改过之后，不在冒名使用原作者署名。</li>
+<li>我保证不擅自恶意曲解、篡改文档，使原作者的荣誉受到损害。</li>
+<li>我保证不将文档用于危害他人及不道德的环境。</li>
+</ol>
+<p>　</p>
+<p>　</p>
+
+                
+              </div>
+            
+            <hr/>
+            <!-- 已修改-新增：打赏代码 开始 -->
+            <div>
+              <details style="text-align:center">
+                <summary style="font-size:1.7em; color: #f2481b;">捐赠一元，支持一下！</summary>
+                <img src="/thanks/r2net_alipay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">　
+                <img src="/thanks/r2net_wechatpay.jpg" srcset="/img/loading.gif" lazyload style="width:150px; height:150px;">
+                <p>注：捐赠时如在留言中注明网名或昵称，即可被列入到感谢名单中。否则，会以佚名身份列入名单。</p>
+              </details>
+            </div>
+            <hr/>
+            <!-- 已修改-新增：打赏代码 结束 -->
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%B6%E8%97%8F/" class="category-chain-item">收藏</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%94%B6%E8%97%8F/%E6%96%87%E7%AB%A0/" class="category-chain-item">文章</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Lisp/" class="print-no-link">#Lisp</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>《Lisp之根源》-「保罗·格雷厄姆」编著</div>
+      <div>https://rsreland.net/blog/202003021307/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>百二一</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年3月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              本文包括非原创内容，版权属于原作者：保罗·格雷厄姆，本文翻译：DAI YUWEN 。
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/202003132111/" title="随手涂鸦：郁金香">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">随手涂鸦：郁金香</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/202003021228/" title="《AHEADシリーズ-終わりのクロニクル-(AHEAD Series 终焉的年代记)》日文原版小说，全14卷，已完结。">
+                        <span class="hidden-mobile">《AHEADシリーズ-終わりのクロニクル-(AHEAD Series 终焉的年代记)》日文原版小说，全14卷，已完结。</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"EKdmASjIRBzDpmdhjJvD7sQ7-MdYXbMMI","appKey":"3xhpLOaU8oKm2IGn0JVL08dW","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://leancloud.rsreland.net","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+      <!-- 已修改-新增：相关文章 开始 -->
+      <aside class="sidebar" style="padding-left: 0rem; margin-right: 1rem; position: sticky; top: 64px;">
+        
+            <section class="related-posts">
+                <h5><b>= 相关文章 =</b></h5>
+                <ul>
+                
+                        <li><a href="/blog/202207112048/">关于《人民日报》等报纸的理论水平的批语</a></li>
+                        
+                        <li><a href="/blog/202108201758/">《维生素ABCDE与免疫力》</a></li>
+                        
+                        <li><a href="/blog/202202271702/">《地球宪章》</a></li>
+                        
+                        <li><a href="/blog/202503281458/">《巴虺的牧群》-「oobmab」著</a></li>
+                        
+                        <li><a href="/blog/202503281414/">《黑太岁》-「oobmab」著</a></li>
+                        
+                        <li><a href="/blog/202503281929/">《鬼乘菩萨》-「火之高兴rua」著</a></li>
+                        
+                        <li><a href="/blog/202503282038/">《太平妖术》-「火之高兴rua」著</a></li>
+                        
+                        <li><a href="/blog/202106291832/">《中国共产党一百年大事记》-「中共中央党史和文献研究院」编著</a></li>
+                        
+                </ul>
+            </section>
+        
+      </aside>
+      <!-- 已修改-新增：相关文章 结束 -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
